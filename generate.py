@@ -7,9 +7,12 @@ print("here")
 length=1
 width=1
 height=1
-x=0
-y=0
-z=height/2 #makes it so that the initial position of the box is at ground-level
-pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in box.sdf
-pyrosim.Send_Cube(name="Box2", pos=[x,y,z] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in box.sdf
+x1=0
+y1=0
+z1=height/2 #makes it so that the initial position of the box is at ground-level
+x2=length #makes it so that the box is staggered
+y2=0  
+z2=z1+height #initially on top of the first box
+pyrosim.Send_Cube(name="Box", pos=[x1,y1,z1] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in box.sdf
+pyrosim.Send_Cube(name="Box2", pos=[x2,y2,z2] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in box.sdf
 pyrosim.End() #tells pyrosim to close the sdf file
