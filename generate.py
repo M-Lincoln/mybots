@@ -13,6 +13,9 @@ z1=height/2 #makes it so that the initial position of the box is at ground-level
 x2=length #makes it so that the box is staggered
 y2=0  
 z2=z1+height #initially on top of the first box
-pyrosim.Send_Cube(name="Box", pos=[x1,y1,z1] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in box.sdf
-pyrosim.Send_Cube(name="Box2", pos=[x2,y2,z2] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in box.sdf
+for j in range(10):
+    s=str(j) #assign box # per iterations
+    pyrosim.Send_Cube(name="Box"+s, pos=[x1,y1,z1] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in boxes.sdf
+    ### NEED TO EDIT### z1=(2*z1)+z1 #update the starting height position of the box, st they stack on top of each other
+#pyrosim.Send_Cube(name="Box2", pos=[x2,y2,z2] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in boxes.sdf
 pyrosim.End() #tells pyrosim to close the sdf file
