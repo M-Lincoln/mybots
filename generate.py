@@ -1,6 +1,7 @@
 #generate.py
 ####to run this, go into terminal: 'python .\generate.py' so that it generates the box.sdf file in the specified path
 #use pyrosim to generate a link, store it in a special file called world.sdf, and then simulate.py will read and simulate it 
+from tkinter import YView
 import pyrosim.pyrosim as pyrosim #import pyrosim
 length=1
 width=1
