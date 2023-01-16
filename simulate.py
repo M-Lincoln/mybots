@@ -22,6 +22,8 @@ frontLegSensorValues = numpy.zeros(1000)
 x = numpy.linspace(0,2*pi,1000)
 targetAngles = numpy.sin(x) #create an array with sin(x) values 
 print("targetAngles = ",targetAngles) 
+numpy.save(os.path.join('data','targetAngles'),targetAngles, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
+exit()
 #matplotlib.pyplot.plot(x, targetAngles)
 #matplotlib.pyplot.xlabel('Angle [rad]')
 #matplotlib.pyplot.ylabel('sin(x)')
