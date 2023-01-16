@@ -1,11 +1,13 @@
 #trial of simulate.py
 from cmath import pi
+from xml.etree.ElementTree import PI
 import pyrosim.pyrosim as pyrosim #import pyrosim
 import pybullet as p
 import pybullet_data
 import time
 import numpy
 import os #need this to be able to save a variable in another directory/folder
+import random #need this package for returning random numbers
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.setGravity(0,0,-9.8)#add gravity
@@ -29,7 +31,7 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
         bodyIndex = robotID, #tells simulator what robot the motor should be attached to (which is called 'robot' in this case)
         jointName = b'torso_backleg', #tells the simulator what joint the motor should be attached to. in this case, the joint connecting back leg and torso
         controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
-        targetPosition = -pi/8.0, # -pi/4 tippy toes desired position (desired angle) between the 2 links connected by the joint
+        targetPosition = (random.random()*pi)-(pi/2.0), # this keeps the target position between -pi/2 and pi/2. -pi/8 tippy toes desired position (desired angle) between the 2 links connected by the joint
         maxForce = 500) #cap the total torque used by the motor [500 Nm]
 
     ##simulate a motor for joint 'torso_frontleg'
@@ -37,7 +39,7 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
         bodyIndex = robotID, #tells simulator what robot the motor should be attached to (which is called 'robot' in this case)
         jointName = b'torso_frontleg', #tells the simulator what joint the motor should be attached to. in this case, the joint connecting front leg and torso
         controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
-        targetPosition = pi/8.0, # pi/4 tippy toes. desired position (desired angle) between the 2 links connected by the joint
+        targetPosition = (random.random()*pi)-(pi/2.0), # this keeps the target position between -pi/2 and pi/2. pi/8 tippy toes. desired position (desired angle) between the 2 links connected by the joint
         maxForce = 500) #cap the total torque used by the motor [500 Nm]
 
     time.sleep(.05) #time.sleep(0.005) is nice viewing time, not too slow
