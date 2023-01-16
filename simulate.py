@@ -13,13 +13,20 @@ robotID=p.loadURDF("body.urdf") #add a torso to the environment
 p.loadSDF("world.sdf")
 pyrosim.Prepare_To_Simulate(robotID) #pyrosim needs to set up for simulating sensors. robotID contains an integer, indicating which robot you want prepared for simulation
 backLegSensorValues = numpy.zeros(1000)
+frontLegSensorValues = numpy.zeros(1000)
 for i in range(1000): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
     p.stepSimulation()
+    ##add back leg sensor and track values
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("backleg") #add a touch sensor to the back leg
     print("backLegTouch sensor value = %d" %backLegSensorValues[i]) #print the sensor value of backLegTouch
+    ##add front leg sensor and track values
+    frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("frontleg") #add a touch sensor to the front leg
+    print("frontLegTouch sensor value = %d" %frontLegSensorValues[i]) #print the sensor value of frontLegTouch
     time.sleep(.005) #time.sleep(0.005) is nice viewing time, not too slow
     print(i) 
     #to move the camera, control+click and drag with a mouse, or 2-fingered swipe on trackpad for zooming in/out
 p.disconnect()
 print("backLegSensorValues = ",backLegSensorValues) #printing array of backLegSensorValues
+print("frontLegSensorValues = ",frontLegSensorValues) #printing array of frontLegSensorValues
 numpy.save(os.path.join('data','backLegSensorValues'),backLegSensorValues, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
+numpy.save(os.path.join('data','frontLegSensorValues'),frontLegSensorValues, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
