@@ -22,4 +22,4 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
     #to move the camera, control+click and drag with a mouse, or 2-fingered swipe on trackpad for zooming in/out
 p.disconnect()
 print("backLegSensorValues = ",backLegSensorValues) #printing array of backLegSensorValues
-numpy.save(os.path.join('data','backLegSensorValues'),backLegSensorValues, allow_pickle=True, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
+numpy.save(os.path.join('data','backLegSensorValues'),backLegSensorValues, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
