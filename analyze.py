@@ -6,7 +6,8 @@ frontLegSensorValues = numpy.load('data/frontLegSensorValues.npy',mmap_mode ='r'
 print("backLegSensorValues = ",backLegSensorValues) #printing array of backLegSensorValues
 print("frontLegSensorValues = ",frontLegSensorValues) #printing array of frontLegSensorValues
 
-matplotlib.pyplot.plot(backLegSensorValues) #plot the values of backLegSensorValues array
-matplotlib.pyplot.plot(frontLegSensorValues) #plot the values of frontLegSensorValues array
+matplotlib.pyplot.plot(backLegSensorValues, label = "back leg sensor values") #plot the values of backLegSensorValues array
+matplotlib.pyplot.plot(frontLegSensorValues, label = "front leg sensor values") #plot the values of frontLegSensorValues array
 
+matplotlib.pyplot.legend(loc="upper left")
 matplotlib.pyplot.show() #show the above plot
