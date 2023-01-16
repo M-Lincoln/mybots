@@ -32,7 +32,7 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
         jointName = b'torso_backleg', #tells the simulator what joint the motor should be attached to. in this case, the joint connecting back leg and torso
         controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
         targetPosition = (random.random()*pi)-(pi/2.0), # this keeps the target position between -pi/2 and pi/2. -pi/8 tippy toes desired position (desired angle) between the 2 links connected by the joint
-        maxForce = 500) #cap the total torque used by the motor [500 Nm]
+        maxForce = 35) #cap the total torque used by the motor [500 Nm]
 
     ##simulate a motor for joint 'torso_frontleg'
     pyrosim.Set_Motor_For_Joint(
@@ -40,7 +40,7 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
         jointName = b'torso_frontleg', #tells the simulator what joint the motor should be attached to. in this case, the joint connecting front leg and torso
         controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
         targetPosition = (random.random()*pi)-(pi/2.0), # this keeps the target position between -pi/2 and pi/2. pi/8 tippy toes. desired position (desired angle) between the 2 links connected by the joint
-        maxForce = 500) #cap the total torque used by the motor [500 Nm]
+        maxForce = 35) #cap the total torque used by the motor [500 Nm]
 
     time.sleep(.05) #time.sleep(0.005) is nice viewing time, not too slow
     print(i) 
