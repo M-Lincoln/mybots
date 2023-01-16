@@ -8,6 +8,12 @@ import numpy
 import os #need this to be able to save a variable in another directory/folder
 import random #need this package for returning random numbers
 import matplotlib.pyplot 
+
+#create new variables
+amplitude = pi/4
+frequency = 10
+phaseOffset = 0
+
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.setGravity(0,0,-9.8)#add gravity
@@ -20,10 +26,10 @@ frontLegSensorValues = numpy.zeros(1000)
 
 ##closed loop control 
 x = numpy.linspace(0,2*pi,1000)
-targetAngles = (numpy.sin(x))*pi/4 #create an array with sin(x) values 
+targetAngles = amplitude*(numpy.sin(frequency*x+phaseOffset)) #create an array with sin(x) values 
 print("targetAngles = ",targetAngles) 
-#numpy.save(os.path.join('data','targetAngles'),targetAngles, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
-
+numpy.save(os.path.join('data','targetAngles'),targetAngles, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
+exit()
 #matplotlib.pyplot.plot(x, targetAngles)
 #matplotlib.pyplot.xlabel('Angle [rad]')
 #matplotlib.pyplot.ylabel('sin(x)')
