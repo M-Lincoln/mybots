@@ -9,10 +9,13 @@ import os #need this to be able to save a variable in another directory/folder
 import random #need this package for returning random numbers
 import matplotlib.pyplot 
 
-#create new variables
-amplitude = pi/4
-frequency = 10
-phaseOffset = 0
+#create sin variables for front and back legs
+amplitude_backleg = pi/4
+frequency_backleg = 10
+phaseOffset_backleg = 0
+amplitude_frontleg = pi/4
+frequency_frontleg = 10
+phaseOffset_frontleg = 0
 
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -26,10 +29,14 @@ frontLegSensorValues = numpy.zeros(1000)
 
 ##closed loop control 
 x = numpy.linspace(0,2*pi,1000)
-targetAngles = amplitude*(numpy.sin(frequency*x+phaseOffset)) #create an array with sin(x) values 
-print("targetAngles = ",targetAngles) 
-numpy.save(os.path.join('data','targetAngles'),targetAngles, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
-exit()
+targetAngles_backleg = amplitude_backleg*(numpy.sin(frequency_backleg*x+phaseOffset_backleg)) #create an array with sin(x) values 
+targetAngles_frontleg = amplitude_frontleg*(numpy.sin(frequency_frontleg*x+phaseOffset_frontleg)) #create an array with sin(x) values 
+print("targetAngles_backleg = ",targetAngles_backleg)
+print("targetAngles_frontleg = ",targetAngles_frontleg) 
+
+#numpy.save(os.path.join('data','targetAngles_backleg'),targetAngles_backleg, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
+#numpy.save(os.path.join('data','targetAngles_frontleg'),targetAngles_frontleg, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
+
 #matplotlib.pyplot.plot(x, targetAngles)
 #matplotlib.pyplot.xlabel('Angle [rad]')
 #matplotlib.pyplot.ylabel('sin(x)')
@@ -53,7 +60,7 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
         bodyIndex = robotID, #tells simulator what robot the motor should be attached to (which is called 'robot' in this case)
         jointName = b'torso_backleg', #tells the simulator what joint the motor should be attached to. in this case, the joint connecting back leg and torso
         controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
-        targetPosition = targetAngles[i], # desired position (desired angle) between the 2 links connected by the joint
+        targetPosition = targetAngles_backleg[i], # desired position (desired angle) between the 2 links connected by the joint
         maxForce = 35) #cap the total torque used by the motor [500 Nm]
 
     ##simulate a motor for joint 'torso_frontleg'
@@ -61,7 +68,7 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
         bodyIndex = robotID, #tells simulator what robot the motor should be attached to (which is called 'robot' in this case)
         jointName = b'torso_frontleg', #tells the simulator what joint the motor should be attached to. in this case, the joint connecting front leg and torso
         controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
-        targetPosition = targetAngles[i], # desired position (desired angle) between the 2 links connected by the joint
+        targetPosition = targetAngles_frontleg[i], # desired position (desired angle) between the 2 links connected by the joint
         maxForce = 35) #cap the total torque used by the motor [500 Nm]
 
     time.sleep(.005) #time.sleep(0.005) is nice viewing time, not too slow

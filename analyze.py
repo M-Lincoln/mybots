@@ -14,6 +14,9 @@ import numpy
 #matplotlib.pyplot.show() #show the above plot
 
 ##load and plot sinusoid
-targetAngles = numpy.load('data/targetAngles.npy',mmap_mode ='r', allow_pickle= False, fix_imports = False) #load data/backLegSensorValues.npy (for reading only = 'mmap_mode = r' into the vector backLegSensorValues.
-matplotlib.pyplot.plot(targetAngles, linewidth = 3, label = "targetAngles") #plot t
+targetAngles_backleg = numpy.load('data/targetAngles_backleg.npy',mmap_mode ='r', allow_pickle= False, fix_imports = False) 
+targetAngles_frontleg = numpy.load('data/targetAngles_frontleg.npy',mmap_mode ='r', allow_pickle= False, fix_imports = False) #load data/backLegSensorValues.npy (for reading only = 'mmap_mode = r' into the vector backLegSensorValues.
+matplotlib.pyplot.plot(targetAngles_backleg, linewidth = 3, label = "targetAngles_backleg") #plot t
+matplotlib.pyplot.plot(targetAngles_frontleg, label = "targetAngles_frontleg") #plot t
+matplotlib.pyplot.legend(loc="upper left")
 matplotlib.pyplot.show()
