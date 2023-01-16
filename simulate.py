@@ -22,6 +22,15 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
     ##add front leg sensor and track values
     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("frontleg") #add a touch sensor to the front leg
     print("frontLegTouch sensor value = %d" %frontLegSensorValues[i]) #print the sensor value of frontLegTouch
+    
+    ##simulate a motor
+    pyrosim.Set_Motor_For_Joint(
+        bodyIndex = robotID, #tells simulator what robot the motor should be attached to (which is called 'robot' in this case)
+        jointName = b'torso_backleg', #tells the simulator what joint the motor should be attached to. in this case, the joint connecting back leg and torso
+        controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
+        targetPosition = 0.0, #desired position (desired angle) between the 2 links connected by the joint
+        maxForce = 500) #cap the total torque used by the motor [500 Nm]
+
     time.sleep(.005) #time.sleep(0.005) is nice viewing time, not too slow
     print(i) 
     #to move the camera, control+click and drag with a mouse, or 2-fingered swipe on trackpad for zooming in/out
