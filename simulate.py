@@ -22,8 +22,8 @@ frontLegSensorValues = numpy.zeros(1000)
 x = numpy.linspace(0,2*pi,1000)
 targetAngles = (numpy.sin(x))*pi/4 #create an array with sin(x) values 
 print("targetAngles = ",targetAngles) 
-numpy.save(os.path.join('data','targetAngles'),targetAngles, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
-exit()
+#numpy.save(os.path.join('data','targetAngles'),targetAngles, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
+
 #matplotlib.pyplot.plot(x, targetAngles)
 #matplotlib.pyplot.xlabel('Angle [rad]')
 #matplotlib.pyplot.ylabel('sin(x)')
@@ -47,7 +47,7 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
         bodyIndex = robotID, #tells simulator what robot the motor should be attached to (which is called 'robot' in this case)
         jointName = b'torso_backleg', #tells the simulator what joint the motor should be attached to. in this case, the joint connecting back leg and torso
         controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
-        targetPosition = (random.random()*pi)-(pi/2.0), # this keeps the target position between -pi/2 and pi/2. -pi/8 tippy toes desired position (desired angle) between the 2 links connected by the joint
+        targetPosition = targetAngles[i], # desired position (desired angle) between the 2 links connected by the joint
         maxForce = 35) #cap the total torque used by the motor [500 Nm]
 
     ##simulate a motor for joint 'torso_frontleg'
@@ -55,10 +55,10 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
         bodyIndex = robotID, #tells simulator what robot the motor should be attached to (which is called 'robot' in this case)
         jointName = b'torso_frontleg', #tells the simulator what joint the motor should be attached to. in this case, the joint connecting front leg and torso
         controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
-        targetPosition = (random.random()*pi)-(pi/2.0), # this keeps the target position between -pi/2 and pi/2. pi/8 tippy toes. desired position (desired angle) between the 2 links connected by the joint
+        targetPosition = targetAngles[i], # desired position (desired angle) between the 2 links connected by the joint
         maxForce = 35) #cap the total torque used by the motor [500 Nm]
 
-    time.sleep(.05) #time.sleep(0.005) is nice viewing time, not too slow
+    time.sleep(.005) #time.sleep(0.005) is nice viewing time, not too slow
     print(i) 
     #to move the camera, control+click and drag with a mouse, or 2-fingered swipe on trackpad for zooming in/out
 p.disconnect()
