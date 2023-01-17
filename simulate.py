@@ -8,23 +8,7 @@ robot = ROBOT() #create an object (an instance of the SIMULATION class) called s
 #from robot import ROBOT
 #from world import WORLD
 #from cmath import pi
-#import pyrosim.pyrosim as pyrosim #import pyrosim
-#import pybullet as p
-#import pybullet_data
-#import time
-#import numpy
-#import os #need this to be able to save a variable in another directory/folder
-#import random #need this package for returning random numbers
-#import matplotlib.pyplot 
-#import constants as c
 
-#physicsClient = p.connect(p.GUI)
-#p.setAdditionalSearchPath(pybullet_data.getDataPath())
-#p.setGravity(c.grav_x,c.grav_y,c.grav_z)#add gravity
-#planeID=p.loadURDF("plane.urdf") #add a floor to the environment
-#robotID=p.loadURDF("body.urdf") #add a torso to the environment
-#p.loadSDF("world.sdf")
-#pyrosim.Prepare_To_Simulate(robotID) #pyrosim needs to set up for simulating sensors. robotID contains an integer, indicating which robot you want prepared for simulation
 #backLegSensorValues = numpy.zeros(c.iterationNum)
 #frontLegSensorValues = numpy.zeros(c.iterationNum)
 
