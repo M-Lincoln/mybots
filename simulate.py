@@ -1,5 +1,5 @@
 ##trial of simulate.py
-pass
+from simulation import SIMULATION
 #from cmath import pi
 #import pyrosim.pyrosim as pyrosim #import pyrosim
 #import pybullet as p
