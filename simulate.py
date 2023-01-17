@@ -31,7 +31,7 @@ robot = ROBOT() #create an object (an instance of the SIMULATION class) called s
 
 
 
-#p.disconnect()
+
 #print("backLegSensorValues = ",backLegSensorValues) #printing array of backLegSensorValues
 #print("frontLegSensorValues = ",frontLegSensorValues) #printing array of frontLegSensorValues
 #numpy.save(os.path.join('data','backLegSensorValues'),backLegSensorValues, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"

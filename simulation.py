@@ -58,4 +58,7 @@ class SIMULATION:
             time.sleep(c.assignSleepTime) #time.sleep(0.005) is nice viewing time, not too slow
             #print(i) 
             ##to move the camera, control+click and drag with a mouse, or 2-fingered swipe on trackpad for zooming in/out
-            #p.disconnect()
+    def __del__(self):
+        import pybullet as p
+        p.disconnect()
+    
