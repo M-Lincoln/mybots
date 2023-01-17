@@ -1,11 +1,13 @@
 ##trial of simulate.py
-from simulation import SIMULATION
 from world import WORLD
 from robot import ROBOT
-world = WORLD() #create an object (an instance of the SIMULATION class) called simulation
-robot = ROBOT() #create an object (an instance of the SIMULATION class) called simulation
+from simulation import SIMULATION
+
+
 simulation = SIMULATION() #create an object (an instance of the SIMULATION class) called simulation
 simulation.Run()
+world = WORLD() #create an object (an instance of the SIMULATION class) called simulation
+robot = ROBOT() #create an object (an instance of the SIMULATION class) called simulation
 
 #from robot import ROBOT
 #from world import WORLD

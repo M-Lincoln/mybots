@@ -11,14 +11,15 @@ class SIMULATION:
         #import random #need this package for returning random numbers
         #import matplotlib.pyplot 
         import constants as c
+        from world import WORLD
+        from robot import ROBOT
 
         self.physicsClient = p.connect(p.GUI)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(c.grav_x,c.grav_y,c.grav_z)#add gravity
         
-        
-      # self.world = WORLD() #create a new SIMULATION attribute, and that attribute will hold an instance of the WORLD class.
-       #self.robot = ROBOT() #create a new SIMULATION attribute, and that attribute will hold an instance of the ROBOT class.
+        self.world = WORLD() #create a new SIMULATION attribute, and that attribute will hold an instance of the WORLD class.
+        self.robot = ROBOT() #create a new SIMULATION attribute, and that attribute will hold an instance of the ROBOT class.
     def Run(self):
         import pybullet as p
         import pyrosim.pyrosim as pyrosim #import pyrosim
