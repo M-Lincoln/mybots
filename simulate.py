@@ -1,5 +1,12 @@
 ##trial of simulate.py
 from simulation import SIMULATION
+from world import WORLD
+from robot import ROBOT
+simulation = SIMULATION() #create an object (an instance of the SIMULATION class) called simulation
+world = WORLD() #create an object (an instance of the SIMULATION class) called simulation
+robot = ROBOT() #create an object (an instance of the SIMULATION class) called simulation
+#from robot import ROBOT
+#from world import WORLD
 #from cmath import pi
 #import pyrosim.pyrosim as pyrosim #import pyrosim
 #import pybullet as p
