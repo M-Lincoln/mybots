@@ -30,8 +30,7 @@ class SIMULATION:
         #import random #need this package for returning random numbers
         #import matplotlib.pyplot 
         import constants as c
-        self.backLegSensorValues = numpy.zeros(c.iterationNum)
-        self.frontLegSensorValues = numpy.zeros(c.iterationNum)
+        
         for i in range(c.iterationNum): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
             print("loop index variable = %d" %i)
             p.stepSimulation()

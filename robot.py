@@ -8,12 +8,23 @@ class ROBOT:
         pyrosim.Prepare_To_Simulate(self.robotID) #pyrosim needs to set up for simulating sensors. robotID contains an integer, indicating which robot you want prepared for simulation
 
     def Prepare_To_Sense(self):
+        import numpy
+        import constants as c
         from sensor import SENSOR
         import pyrosim.pyrosim as pyrosim #import pyrosim
         self.sensors = {} #create an empty dictionary 
+        self.values = [] #create an empty array
         for linkName in pyrosim.linkNamesToIndices:
-            self.sensors[linkName] = SENSOR(linkName) #this results in the SENSOR's constructor being called 3 times. EAch time, it returns an instance of SENSOR. That instance is stored as an entry in the self.sensors dictionary. The key for each dictionary entry is the name of the link that stores that sensor
+            self.sensors[linkName] = SENSOR(linkName) #this results in the SENSOR's constructor being called 3 times. Each time, it returns an instance of SENSOR. That instance is stored as an entry in the self.sensors dictionary. The key for each dictionary entry is the name of the link that stores that sensor
+            self.values = numpy.zeros(c.iterationNum)
+            #print("zero vectors for sensor values = ", numpy.array(self.values[linkName]))
+        print("\nZero vectors for sensor values = ")
+        for i in self.values:
+            for j in i:
+                print(j, end=" ")
+            print()
 
+     
 
     
     #self.motors = {} #create an empty dictionary
