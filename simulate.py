@@ -8,6 +8,7 @@ simulation = SIMULATION() #create an object (an instance of the SIMULATION class
 simulation.Run()
 world = WORLD() #create an object (an instance of the SIMULATION class) called simulation
 robot = ROBOT() #create an object (an instance of the SIMULATION class) called simulation
+robot.Prepare_To_Sense()
 
 #from robot import ROBOT
 #from world import WORLD
