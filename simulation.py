@@ -23,7 +23,7 @@ class SIMULATION:
 
     def Run(self):        
         for i in range(c.iterationNum): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
-            print("loop index variable = %d" %i)
+            print("loop index variable = ",i)
             p.stepSimulation()
             self.robot.sense() #call the "sense" method in the ROBOT constructor
             

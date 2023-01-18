@@ -19,11 +19,12 @@ class ROBOT:
             self.sensors[linkName] = SENSOR(linkName) #this results in the SENSOR's constructor being called 3 times. Each time, it returns an instance of SENSOR. That instance is stored as an entry in the self.sensors dictionary. The key for each dictionary entry is the name of the link that stores that sensor
             print("self.sensors[linkName] = ", self.sensors[linkName])
 
-    def Sense(self):
+    def Sense(self,i):
         for linkName in self.sensors: #for loop in robot.Sense() that iterates over all the SENSOR instances stored in the dictionary self.sensors
-            self.values[linkName] = self.sensor.Get_Value #store the sensor value into self.values
-
-
+            #self.values[linkName] = self.sensor.Get_Value #store the sensor value into self.values
+            #self.sensor.Get_Value = self.sensors[linkName].Get_Value(i)
+            self.sensors[linkName] = self.sensor.Get_Value(i) #the value in library self.sensors for one linkName = touch sensor value at iteration i
+            ##might need to switch this around!! get the current value of touch sensor in sensor.Get_Value() and store it in ith element of self.values
 
      
 
