@@ -6,8 +6,7 @@ from simulation import SIMULATION
 
 simulation = SIMULATION() #create an object (an instance of the SIMULATION class) called simulation
 simulation.Run()
- #create an object (an instance of the SIMULATION class) called simulation
-#robot.Prepare_To_Sense() #called this inside ROBOT in __init__
+
 
 #from robot import ROBOT
 #from world import WORLD

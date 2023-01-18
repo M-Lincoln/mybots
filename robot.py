@@ -18,12 +18,9 @@ class ROBOT:
         for linkName in pyrosim.linkNamesToIndices:
             self.sensors[linkName] = SENSOR(linkName) #this results in the SENSOR's constructor being called 3 times. Each time, it returns an instance of SENSOR. That instance is stored as an entry in the self.sensors dictionary. The key for each dictionary entry is the name of the link that stores that sensor
             print("self.sensors[linkName] = ", self.sensors[linkName])
-        
-        
-        #for i in self.values:
-        #    for j in i:
-        #        print(j, end=" ")
-        #    print()
+
+    def Sense(self):
+
 
      
 
