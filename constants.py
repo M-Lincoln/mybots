@@ -2,7 +2,7 @@
 from cmath import pi
 
 #assign how fast the simulation will run (define the sleep time)
-assignSleepTime=0.005
+assignSleepTime=1/60
 
 #gravity constants
 grav_x = 0

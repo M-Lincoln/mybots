@@ -1,36 +1,26 @@
 #simulation.py
+import pybullet as p
+import pyrosim.pyrosim as pyrosim #import pyrosim
+import pybullet_data
+import time
+import numpy
+import os #need this to be able to save a variable in another directory/folder
+#import random #need this package for returning random numbers
+#import matplotlib.pyplot 
+import constants as c
+from world import WORLD
+from robot import ROBOT
+
 class SIMULATION:
 
     def __init__(self):
-        import pybullet as p
-        import pyrosim.pyrosim as pyrosim #import pyrosim
-        import pybullet_data
-        import time
-        import numpy
-        import os #need this to be able to save a variable in another directory/folder
-        #import random #need this package for returning random numbers
-        #import matplotlib.pyplot 
-        import constants as c
-        from world import WORLD
-        from robot import ROBOT
-
         self.physicsClient = p.connect(p.GUI)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(c.grav_x,c.grav_y,c.grav_z)#add gravity
-        
         self.world = WORLD() #create a new SIMULATION attribute, and that attribute will hold an instance of the WORLD class.
         self.robot = ROBOT() #create a new SIMULATION attribute, and that attribute will hold an instance of the ROBOT class.
-    def Run(self):
-        import pybullet as p
-        import pyrosim.pyrosim as pyrosim #import pyrosim
-        import pybullet_data
-        import time
-        import numpy
-        import os #need this to be able to save a variable in another directory/folder
-        #import random #need this package for returning random numbers
-        #import matplotlib.pyplot 
-        import constants as c
-        
+
+    def Run(self):        
         for i in range(c.iterationNum): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
             print("loop index variable = %d" %i)
             p.stepSimulation()
@@ -57,7 +47,7 @@ class SIMULATION:
             time.sleep(c.assignSleepTime) #time.sleep(0.005) is nice viewing time, not too slow
             #print(i) 
             ##to move the camera, control+click and drag with a mouse, or 2-fingered swipe on trackpad for zooming in/out
+
     def __del__(self):
-        import pybullet as p
         p.disconnect()
     

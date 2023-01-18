@@ -8,12 +8,12 @@ def Create_Robot(x1,y1,z1,width,length,height):
 	pyrosim.Start_URDF("body.urdf")
 
 	#create a robot with an abdomen and 2 legs:
-	pyrosim.Send_Cube(name="torso", pos=[0,0,1.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+	pyrosim.Send_Cube(name="torso", pos=[1.5,0,1.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 	#create backleg
-	pyrosim.Send_Joint( name = "torso_backleg" , parent= "torso" , child = "backleg" , type = "revolute", position = [-0.5,0,1]) #Joint
+	pyrosim.Send_Joint( name = "torso_backleg" , parent= "torso" , child = "backleg" , type = "revolute", position = [1,0,1]) #Joint
 	pyrosim.Send_Cube(name="backleg", pos=[-0.5,0,-0.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 	#create frontleg
-	pyrosim.Send_Joint( name = "torso_frontleg" , parent= "torso" , child = "frontleg" , type = "revolute", position = [0.5,0,1]) #Joint
+	pyrosim.Send_Joint( name = "torso_frontleg" , parent= "torso" , child = "frontleg" , type = "revolute", position = [2,0,1]) #Joint
 	pyrosim.Send_Cube(name="frontleg", pos=[0.5,0,-0.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 
 
