@@ -20,6 +20,9 @@ class ROBOT:
             print("self.sensors[linkName] = ", self.sensors[linkName])
 
     def Sense(self):
+        for linkName in self.sensors: #for loop in robot.Sense() that iterates over all the SENSOR instances stored in the dictionary self.sensors
+            self.values[linkName] = self.sensor.Get_Value #store the sensor value into self.values
+
 
 
      
