@@ -19,6 +19,7 @@ class SIMULATION:
         p.setGravity(c.grav_x,c.grav_y,c.grav_z)#add gravity
         self.world = WORLD() #create a new SIMULATION attribute, and that attribute will hold an instance of the WORLD class.
         self.robot = ROBOT() #create a new SIMULATION attribute, and that attribute will hold an instance of the ROBOT class.
+        
 
     def Run(self):        
         for i in range(c.iterationNum): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
