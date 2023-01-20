@@ -42,3 +42,6 @@ class SIMULATION:               #define a class, SIMULATION
         #controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
         #targetPosition = targetAngles_frontleg[i], # desired position (desired angle) between the 2 links connected by the joint
         #maxForce = c.defineMaxForce) #cap the total torque used by the motor [500 Nm]
+    
+    def __del__(self):
+        p.disconnect()

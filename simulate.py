@@ -39,7 +39,7 @@ simulation.Run()
 #time.sleep(c.sleepTime) #time.sleep(0.005) is nice viewing time, not too slow
 #    print(i) 
 #    #to move the camera, control+click and drag with a mouse, or 2-fingered swipe on trackpad for zooming in/out
-#p.disconnect()
+
 #print("backLegSensorValues = ",backLegSensorValues) #printing array of backLegSensorValues
 #print("frontLegSensorValues = ",frontLegSensorValues) #printing array of frontLegSensorValues
 #numpy.save(os.path.join('data','backLegSensorValues'),backLegSensorValues, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
