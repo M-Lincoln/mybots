@@ -3,6 +3,7 @@ import pyrosim.pyrosim as pyrosim #import pyrosim
 import pybullet as p
 import constants as c
 import pybullet_data
+import time
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.setGravity(0,0,-9.8)#add gravity
@@ -19,7 +20,8 @@ class SIMULATION:               #define a class, SIMULATION
     def Run(self):
         for i in range(c.iterationLength): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
             print("iteration number %d" %i)
-        #p.stepSimulation()
+            p.stepSimulation()
+            time.sleep(0.005)
         ##add back leg sensor and track values
         #backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("backleg") #add a touch sensor to the back leg
         #print("backLegTouch sensor value = %d" %backLegSensorValues[i]) #print the sensor value of backLegTouch
