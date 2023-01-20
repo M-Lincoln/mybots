@@ -8,14 +8,8 @@ import numpy
 import os #need this to be able to save a variable in another directory/folder
 import random #need this package for returning random numbers
 import matplotlib.pyplot 
+import constants as c
 
-#create sin variables for front and back legs
-amplitude_backleg = pi/4
-frequency_backleg = 10
-phaseOffset_backleg = 0
-amplitude_frontleg = pi/4
-frequency_frontleg = 10
-phaseOffset_frontleg = 0
 
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -29,8 +23,8 @@ frontLegSensorValues = numpy.zeros(1000)
 
 ##closed loop control 
 x = numpy.linspace(0,2*pi,1000)
-targetAngles_backleg = amplitude_backleg*(numpy.sin(frequency_backleg*x+phaseOffset_backleg)) #create an array with sin(x) values 
-targetAngles_frontleg = amplitude_frontleg*(numpy.sin(frequency_frontleg*x+phaseOffset_frontleg)) #create an array with sin(x) values 
+targetAngles_backleg = c.amplitude_backleg*(numpy.sin(c.frequency_backleg*x+c.phaseOffset_backleg)) #create an array with sin(x) values 
+targetAngles_frontleg = c.amplitude_frontleg*(numpy.sin(c.frequency_frontleg*x+c.phaseOffset_frontleg)) #create an array with sin(x) values 
 print("targetAngles_backleg = ",targetAngles_backleg)
 print("targetAngles_frontleg = ",targetAngles_frontleg) 
 
@@ -44,7 +38,7 @@ print("targetAngles_frontleg = ",targetAngles_frontleg)
 #matplotlib.pyplot.show()
 
 
-for i in range(1000): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
+for i in range(c.iterationLength): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
     p.stepSimulation()
     ##add back leg sensor and track values
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("backleg") #add a touch sensor to the back leg
@@ -61,7 +55,7 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
         jointName = b'torso_backleg', #tells the simulator what joint the motor should be attached to. in this case, the joint connecting back leg and torso
         controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
         targetPosition = targetAngles_backleg[i], # desired position (desired angle) between the 2 links connected by the joint
-        maxForce = 35) #cap the total torque used by the motor [500 Nm]
+        maxForce = c.defineMaxForce) #cap the total torque used by the motor [500 Nm]
 
     ##simulate a motor for joint 'torso_frontleg'
     pyrosim.Set_Motor_For_Joint(
@@ -69,9 +63,9 @@ for i in range(1000): #for loop going from 0-999, end with colon and make sure n
         jointName = b'torso_frontleg', #tells the simulator what joint the motor should be attached to. in this case, the joint connecting front leg and torso
         controlMode = p.POSITION_CONTROL, #defines the type of control we are using (either position control or velocity control)
         targetPosition = targetAngles_frontleg[i], # desired position (desired angle) between the 2 links connected by the joint
-        maxForce = 35) #cap the total torque used by the motor [500 Nm]
+        maxForce = c.defineMaxForce) #cap the total torque used by the motor [500 Nm]
 
-    time.sleep(.005) #time.sleep(0.005) is nice viewing time, not too slow
+    time.sleep(c.sleepTime) #time.sleep(0.005) is nice viewing time, not too slow
     print(i) 
     #to move the camera, control+click and drag with a mouse, or 2-fingered swipe on trackpad for zooming in/out
 p.disconnect()

@@ -1,0 +1,18 @@
+#constants.py contains all of the constants being pulled in simulate.py
+from cmath import pi
+#create sin variables for front and back legs
+amplitude_backleg = pi/4
+frequency_backleg = 10
+phaseOffset_backleg = 0
+amplitude_frontleg = pi/4
+frequency_frontleg = 10
+phaseOffset_frontleg = 0
+
+#iteration range
+iterationLength = 1000
+
+#define max force for the motor in the joints
+defineMaxForce = 35
+
+#define the sleep time for the simulation
+sleepTime=0.005 #1/60 is better for longer simulation but not too long
