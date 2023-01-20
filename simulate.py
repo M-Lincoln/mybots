@@ -13,9 +13,7 @@ from simulation import SIMULATION #Include the SIMULATION class
 simulation = SIMULATION() #Create an object (instance) of the SIMULATION class called 'simulation'
 
 
-#planeID=p.loadURDF("plane.urdf") #add a floor to the environment
 
-#p.loadSDF("world.sdf")
 
 #backLegSensorValues = numpy.zeros(1000)
 #frontLegSensorValues = numpy.zeros(1000)
