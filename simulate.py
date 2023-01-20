@@ -2,24 +2,21 @@
 from simulation import SIMULATION #Include the SIMULATION class 
 
 #from cmath import pi
-#import pyrosim.pyrosim as pyrosim #import pyrosim
-#import pybullet as p
-#import pybullet_data
+
+
 #import time
 #import numpy
-#import os #need this to be able to save a variable in another directory/folder
+
 #import random #need this package for returning random numbers
 #import matplotlib.pyplot 
 #import constants as c
 simulation = SIMULATION() #Create an object (instance) of the SIMULATION class called 'simulation'
 
-#physicsClient = p.connect(p.GUI)
-#p.setAdditionalSearchPath(pybullet_data.getDataPath())
-#p.setGravity(0,0,-9.8)#add gravity
+
 #planeID=p.loadURDF("plane.urdf") #add a floor to the environment
-#robotID=p.loadURDF("body.urdf") #add a torso to the environment
+
 #p.loadSDF("world.sdf")
-#pyrosim.Prepare_To_Simulate(robotID) #pyrosim needs to set up for simulating sensors. robotID contains an integer, indicating which robot you want prepared for simulation
+
 #backLegSensorValues = numpy.zeros(1000)
 #frontLegSensorValues = numpy.zeros(1000)
 
@@ -67,7 +64,7 @@ simulation = SIMULATION() #Create an object (instance) of the SIMULATION class c
 #        targetPosition = targetAngles_frontleg[i], # desired position (desired angle) between the 2 links connected by the joint
 #        maxForce = c.defineMaxForce) #cap the total torque used by the motor [500 Nm]
 
-#    time.sleep(c.sleepTime) #time.sleep(0.005) is nice viewing time, not too slow
+#time.sleep(c.sleepTime) #time.sleep(0.005) is nice viewing time, not too slow
 #    print(i) 
 #    #to move the camera, control+click and drag with a mouse, or 2-fingered swipe on trackpad for zooming in/out
 #p.disconnect()
