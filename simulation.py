@@ -18,7 +18,7 @@ class SIMULATION:               #define a class, SIMULATION
 
     def Run(self):
         for i in range(c.iterationLength): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
-            print("iteration number ", i)
+            print("iteration number %d" %i)
         #p.stepSimulation()
         ##add back leg sensor and track values
         #backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("backleg") #add a touch sensor to the back leg
