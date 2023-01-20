@@ -1,8 +1,8 @@
 #constants.py contains all of the constants being pulled in simulate.py
 from cmath import pi
 #create sin variables for front and back legs
-amplitude_backleg = pi/4
-frequency_backleg = 10
+amplitude_backleg = pi/4 #pi/4 is good
+frequency_backleg = 10 #10 is good
 phaseOffset_backleg = 0
 amplitude_frontleg = pi/4
 frequency_frontleg = 10
