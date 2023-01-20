@@ -1,5 +1,6 @@
-pass
 #trial of simulate.py
+from simulation import SIMULATION #Include the SIMULATION class 
+
 #from cmath import pi
 #import pyrosim.pyrosim as pyrosim #import pyrosim
 #import pybullet as p
@@ -10,7 +11,7 @@ pass
 #import random #need this package for returning random numbers
 #import matplotlib.pyplot 
 #import constants as c
-
+simulation = SIMULATION() #Create an object (instance) of the SIMULATION class called 'simulation'
 
 #physicsClient = p.connect(p.GUI)
 #p.setAdditionalSearchPath(pybullet_data.getDataPath())
