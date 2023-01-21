@@ -21,13 +21,10 @@ class SIMULATION:               #define a class, SIMULATION
         for i in range(c.iterationLength): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
             #print("iteration number %d" %i)
             p.stepSimulation()
+            self.robot.Sense(i)       #call "Sense()" method 
             time.sleep(0.005)
-        ##add back leg sensor and track values
-        #backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("backleg") #add a touch sensor to the back leg
-        #print("backLegTouch sensor value = %d" %backLegSensorValues[i]) #print the sensor value of backLegTouch
-        ##add front leg sensor and track values
-        #frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("frontleg") #add a touch sensor to the front leg
-        #print("frontLegTouch sensor value = %d" %frontLegSensorValues[i]) #print the sensor value of frontLegTouch
+            
+       
         ##simulate a motor for joint 'torso_backleg'
         #pyrosim.Set_Motor_For_Joint(
         #bodyIndex = robotID, #tells simulator what robot the motor should be attached to (which is called 'robot' in this case)

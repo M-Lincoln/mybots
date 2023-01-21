@@ -2,6 +2,7 @@
 import pyrosim.pyrosim as pyrosim #import pyrosim
 import pybullet as p
 import sensor
+import numpy
 class ROBOT:
     def __init__(self):
         self.motors = {}    #create an empty dictionary for motors because we will have multiple motors for each robot
@@ -14,3 +15,8 @@ class ROBOT:
         for linkName in pyrosim.linkNamesToIndices:
             print(linkName)
             self.sensors[linkName] = sensor.SENSOR(linkName) #try this so we can initiate a sensor instance
+
+    def Sense(self,i):    #enable sensing in the robot
+         for sensor in self.sensors:
+             self.sensors[sensor].Get_Value(i)
+        

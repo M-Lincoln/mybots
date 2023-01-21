@@ -1,8 +1,14 @@
 #sensor.py
+import pyrosim.pyrosim as pyrosim #import pyrosim
 import numpy
 import constants as c
 class SENSOR:
     def __init__(self,linkName):
         self.linkName = linkName
         self.values = numpy.zeros(c.iterationLength)    #create an empty zero vector for all sensor values to populate
-        print("sensor values = ",self.values)
+        
+    def Get_Value(self,i):
+        ##add back leg sensor and track values
+        self.values[i] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName) #add a touch sensor to the specific linkName
+        if i == c.iterationLength-1:
+            print(self.values) #print the sensor values of all sensors at the last time step
