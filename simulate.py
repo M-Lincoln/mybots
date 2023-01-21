@@ -15,8 +15,7 @@ simulation.Run()
 
 
 
-#backLegSensorValues = numpy.zeros(1000)
-#frontLegSensorValues = numpy.zeros(1000)
+
 
 ###closed loop control 
 #x = numpy.linspace(0,2*pi,1000)

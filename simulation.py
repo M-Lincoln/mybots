@@ -14,12 +14,12 @@ class SIMULATION:               #define a class, SIMULATION
     def __init__(self):         #defines the init constructor (AKA method) for the SIMULATION class
         self.world = WORLD()    #creates a new SIMULATION attribute, and that attribute will hold an instance of the WORLD class
         self.robot = ROBOT()    #creates a new SIMULATION attribute, and that attribute will hold an instance of the ROBOT class
-        self.robotID = p.loadURDF("body.urdf") #add a torso to the environment 
-        pyrosim.Prepare_To_Simulate(self.robotID) #pyrosim needs to set up for simulating sensors. robotID contains an integer, indicating which robot you want prepared for simulation
+        #self.robotID = p.loadURDF("body.urdf") #add a torso to the environment 
+        #pyrosim.Prepare_To_Simulate(self.robotID) #pyrosim needs to set up for simulating sensors. robotID contains an integer, indicating which robot you want prepared for simulation
 
     def Run(self):
         for i in range(c.iterationLength): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
-            print("iteration number %d" %i)
+            #print("iteration number %d" %i)
             p.stepSimulation()
             time.sleep(0.005)
         ##add back leg sensor and track values
