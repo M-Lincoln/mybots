@@ -21,10 +21,10 @@ class SIMULATION:               #define a class, SIMULATION
         for i in range(c.iterationLength): #for loop going from 0-999, end with colon and make sure next line is indented. don't need an "end" statement because it will end once no longer indented
             #print("iteration number %d" %i)
             p.stepSimulation()
-            self.robot.Sense(i)       #call "Sense()" method 
+            self.robot.Sense(i)       #call "Sense()" method, so robot can sense some of the changes that have occurred
+            self.robot.Act(i)           #Then, act on the changes.
             time.sleep(0.005)
             
-       
         
     def __del__(self):
         p.disconnect()
