@@ -23,12 +23,11 @@ class ROBOT:
              self.sensors[sensor].Get_Value(i)
 
     def Prepare_To_Act(self):
-        self.motors = {}    #create an empty dictionary for motors because we will have multiple motors for each robot
         for jointName in pyrosim.jointNamesToIndices:
             print(jointName)
             self.motors[jointName] = motor.MOTOR(jointName)
 
-    def Act(self,i):
+    def Act(self,robot,i):
         for motor in self.motors:
-             self.motors[motor].Set_Value(self.robotID,i)
+             self.motors[motor].Set_Value(robot,i)
         
