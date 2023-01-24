@@ -9,6 +9,8 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.setGravity(0,0,-9.8)#add gravity
 from world import WORLD
 from robot import ROBOT
+#import robot    #added this to see if refactoring works
+
 
 class SIMULATION:               #define a class, SIMULATION
     def __init__(self):         #defines the init constructor (AKA method) for the SIMULATION class

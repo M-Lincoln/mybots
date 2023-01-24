@@ -2,6 +2,7 @@
 import pyrosim.pyrosim as pyrosim #import pyrosim
 import pybullet as p
 import sensor
+import motor
 import numpy
 class ROBOT:
     def __init__(self):
@@ -9,6 +10,7 @@ class ROBOT:
         self.robotID = p.loadURDF("body.urdf")
         pyrosim.Prepare_To_Simulate(self.robotID)
         self.Prepare_To_Sense()
+        self.Prepare_To_Act()           #added this, but not sure if it fits here
 
     def Prepare_To_Sense(self):
         self.sensors = {}   #create an empty dictionary for sensors because we will have multiple sensors for each robot
@@ -21,10 +23,12 @@ class ROBOT:
              self.sensors[sensor].Get_Value(i)
 
     def Prepare_To_Act(self):
+        self.motors = {}    #create an empty dictionary for motors because we will have multiple motors for each robot
         for jointName in pyrosim.jointNamesToIndices:
             print(jointName)
+            self.motors[jointName] = motor.MOTOR(jointName)
 
     def Act(self,i):
         for motor in self.motors:
-             self.motors[motor].Set_Value(i)
+             self.motors[motor].Set_Value(self.robotID,i)
         
