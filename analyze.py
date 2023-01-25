@@ -14,11 +14,15 @@ import numpy
 #matplotlib.pyplot.show() #show the above plot
 
 ##load and plot sinusoid
-targetAngles_restruct = numpy.load('data/SensorValues_restruct_trial.npy',mmap_mode ='r', allow_pickle= False, fix_imports = False) 
+SensorValues_backleg = numpy.load('data/SensorValues_backleg.npy',mmap_mode ='r', allow_pickle= False, fix_imports = False) 
+SensorValues_frontleg = numpy.load('data/SensorValues_frontleg.npy',mmap_mode ='r', allow_pickle= False, fix_imports = False) 
+SensorValues_torso = numpy.load('data/SensorValues_torso.npy',mmap_mode ='r', allow_pickle= False, fix_imports = False) 
 #targetAngles_backleg = numpy.load('data/targetAngles_backleg.npy',mmap_mode ='r', allow_pickle= False, fix_imports = False) 
 #targetAngles_frontleg = numpy.load('data/targetAngles_frontleg.npy',mmap_mode ='r', allow_pickle= False, fix_imports = False) #load data/backLegSensorValues.npy (for reading only = 'mmap_mode = r' into the vector backLegSensorValues.
-matplotlib.pyplot.plot(targetAngles_restruct, linewidth = 3, label = "targetAngles_restruct") #plot t
+matplotlib.pyplot.plot(SensorValues_torso, linewidth = 3, label = "SensorValues_torso") #plot t
 #matplotlib.pyplot.plot(targetAngles_backleg, linewidth = 3, label = "targetAngles_backleg") #plot t
 #matplotlib.pyplot.plot(targetAngles_frontleg, label = "targetAngles_frontleg") #plot t
+matplotlib.pyplot.plot(SensorValues_backleg, label = "SensorValues_backleg") #plot t
+matplotlib.pyplot.plot(SensorValues_frontleg, label = "SensorValues_frontleg") #plot t
 matplotlib.pyplot.legend(loc="upper left")
 matplotlib.pyplot.show()
