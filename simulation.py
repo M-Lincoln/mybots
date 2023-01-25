@@ -25,10 +25,10 @@ class SIMULATION:               #define a class, SIMULATION
             p.stepSimulation()
             self.robot.Sense(i)       #call "Sense()" method, so robot can sense some of the changes that have occurred
             self.robot.Act(self.robot,i)           #Then, act on the changes.
-            time.sleep(0.005)
+            time.sleep(0.05)
             
         
     def __del__(self):      #so far, not calling this, so we are not saving any of our values
-        self.sensor.Save_Values()
+        self.sensor.Save_Values()     
         self.motor.Save_Values()
         p.disconnect()

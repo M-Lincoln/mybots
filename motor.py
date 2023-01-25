@@ -12,11 +12,13 @@ class MOTOR:
     def Prepare_To_Act(self):
         self.motorValues = numpy.zeros(c.iterationLength)
         self.amplitude = c.amplitude      #property of each motor
-        self.frequency = c.frequency      #property of each motor
         self.offset = c.offset            #property of each motor
+        if self.jointName==b'torso_backleg':
+            self.frequency = c.frequency*2      #property of each motor
+        else:
+            self.frequency = c.frequency
         x = numpy.linspace(0,2*numpy.pi,1000)
         self.motorValues = self.amplitude*(numpy.sin(self.frequency*x+self.offset)) #create an array with sin(x) values 
-        #targetAngles_frontleg = c.amplitude_frontleg*(numpy.sin(c.frequency_frontleg*x+c.phaseOffset_frontleg)) #create an array with sin(x) values 
     
     def Set_Value(self,robot,i):
         ##simulate a motor for joint
