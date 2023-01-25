@@ -17,7 +17,7 @@ class SENSOR:
             print(self.values) #print the sensor values of all sensors at the last time step
             #self.Save_Values() #once the sensor vector is filled, save each vector to its own file
     
-    def Save_Values(self):      #this is being called in SIMULATION's destructor, which is not being called currently
+    def Save_Values(self):      
         #save sensor values
         numpy.save("data/"+str(self.linkName)+str(".npy"),self.values) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
         

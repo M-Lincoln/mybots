@@ -9,6 +9,8 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.setGravity(0,0,-9.8)#add gravity
 from world import WORLD
 from robot import ROBOT
+import sensor
+import motor
 #import robot    #added this to see if refactoring works
 
 
@@ -25,10 +27,8 @@ class SIMULATION:               #define a class, SIMULATION
             p.stepSimulation()
             self.robot.Sense(i)       #call "Sense()" method, so robot can sense some of the changes that have occurred
             self.robot.Act(self.robot,i)           #Then, act on the changes.
-            time.sleep(0.05)
+            time.sleep(c.sleepTime)
             
         
     def __del__(self):      #so far, not calling this, so we are not saving any of our values
-        self.sensor.Save_Values()     
-        self.motor.Save_Values()
         p.disconnect()
