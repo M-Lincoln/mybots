@@ -2,6 +2,8 @@
 import pyrosim.pyrosim as pyrosim #import pyrosim
 import numpy
 import constants as c
+import os
+
 class SENSOR:
     def __init__(self,linkName):
         self.linkName = linkName
@@ -17,6 +19,6 @@ class SENSOR:
     def Save_Values(self):
         ###NEED TO WORK ON THIS MORE###
         #save sensor values
-        for sensor in self.sensors:
-            numpy.save(os.path.join('data','SensorValues'),self.values, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
-        #numpy.save(os.path.join('data','frontLegSensorValues'),frontLegSensorValues, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
+        #for sensor in self.sensors:
+        numpy.save(os.path.join('data','SensorValues_restruct_trial'),self.values, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
+        
