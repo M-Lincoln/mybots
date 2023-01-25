@@ -28,5 +28,7 @@ class SIMULATION:               #define a class, SIMULATION
             time.sleep(0.005)
             
         
-    def __del__(self):
+    def __del__(self):      #so far, not calling this, so we are not saving any of our values
+        self.sensor.Save_Values()
+        self.motor.Save_Values()
         p.disconnect()

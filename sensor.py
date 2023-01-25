@@ -15,11 +15,9 @@ class SENSOR:
         self.values[i] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName) #add a touch sensor to the specific linkName
         if i == c.iterationLength-1:
             print(self.values) #print the sensor values of all sensors at the last time step
-            self.Save_Values() #once the sensor vector is filled, save each vector to its own file
+            #self.Save_Values() #once the sensor vector is filled, save each vector to its own file
     
-    def Save_Values(self):
-        ###NEED TO WORK ON THIS MORE###
+    def Save_Values(self):      #this is being called in SIMULATION's destructor, which is not being called currently
         #save sensor values
-        for linkName in pyrosim.linkNamesToIndices:
-            numpy.save(os.path.join('data','SensorValues_%s' %linkName),self.values, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
+        numpy.save("data/"+str(self.linkName)+str(".npy"),self.values) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
         

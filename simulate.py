@@ -23,8 +23,6 @@ simulation.Run()
 #print("targetAngles_frontleg = ",targetAngles_frontleg) 
 
 
-##numpy.save(os.path.join('data','targetAngles_backleg'),targetAngles_backleg, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
-##numpy.save(os.path.join('data','targetAngles_frontleg'),targetAngles_frontleg, allow_pickle=False, fix_imports=False) #save an array to a binary file in Numpy, .npy format, in a different folder called "data"
 
 ##matplotlib.pyplot.plot(x, targetAngles)
 ##matplotlib.pyplot.xlabel('Angle [rad]')
