@@ -28,6 +28,8 @@ def Generate_Body(width,length,height):
 def Generate_Brain():
 	pyrosim.Start_NeuralNetwork("brain.nndf")
 	pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "torso") #sensor neurons receive values from sensors. This neuron will receive a value from sensor stored in torso.
+	pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "backleg")	#sensor neuron attached to touch sensor in back leg
+	pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "frontleg")	#sensor neuron attached to touch sensor in front leg
 	pyrosim.End()
 
 Generate_Body(width,length,height)
