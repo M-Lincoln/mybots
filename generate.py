@@ -30,6 +30,9 @@ def Generate_Brain():
 	pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "torso") #sensor neurons receive values from sensors. This neuron will receive a value from sensor stored in torso.
 	pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "backleg")	#sensor neuron attached to touch sensor in back leg
 	pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "frontleg")	#sensor neuron attached to touch sensor in front leg
+
+	pyrosim.Send_Motor_Neuron(name = 3 , jointName = "torso_backleg")	#motor neuron will send values to the motor controlling joint torso_backleg
+	pyrosim.Send_Motor_Neuron(name = 4 , jointName = "torso_frontleg")
 	pyrosim.End()
 
 Generate_Body(width,length,height)
