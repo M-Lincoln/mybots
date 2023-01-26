@@ -13,8 +13,8 @@ class SENSOR:
     def Get_Value(self,i):
         ##add back leg sensor and track values
         self.values[i] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName) #add a touch sensor to the specific linkName
-        if i == c.iterationLength-1:
-            print(self.values) #print the sensor values of all sensors at the last time step
+        #if i == c.iterationLength-1:
+            #print(self.values) #print the sensor values of all sensors at the last time step
             #self.Save_Values() #once the sensor vector is filled, save each vector to its own file
     
     def Save_Values(self):      

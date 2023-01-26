@@ -26,6 +26,7 @@ class SIMULATION:               #define a class, SIMULATION
             #print("iteration number %d" %i)
             p.stepSimulation()
             self.robot.Sense(i)       #call "Sense()" method, so robot can sense some of the changes that have occurred
+            self.robot.Think()         
             self.robot.Act(self.robot,i)           #Then, act on the changes.
             time.sleep(c.sleepTime)
             
