@@ -30,9 +30,13 @@ class NEURAL_NETWORK:
 
     def Update(self):
         for neuronName in self.neurons:
-            if self.neurons[neuronName].Is_Sensor_Neuron():
+            if self.neurons[neuronName].Is_Sensor_Neuron():     #self.neurons[neuronName] is an instance of NEURON, sotred in the dictionary self.neurons
                 self.neurons[neuronName].Update_Sensor_Neuron()
+            else:   #is hidden or motor neuron
+                self.neurons[neuronName].Update_Hidden_Or_Motor_Neuron()
 
+    def Get_Neuron_Names(self):
+        return self.neurons.keys()      #returns the neuron names
 
 # ---------------- Private methods --------------------------------------
 

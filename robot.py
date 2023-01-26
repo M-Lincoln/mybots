@@ -34,7 +34,10 @@ class ROBOT:
         self.nn.Update()
         self.nn.Print()
 
-    def Act(self,robot,i):
-        for motor in self.motors:
-             self.motors[motor].Set_Value(robot,i)
+    def Act(self,i):
+        for neuronName in self.nn.Get_Neuron_Names():
+            #self.nn.Get_Neuron_Names[neuronName]
+            print(neuronName)
+        #for motor in self.motors:
+        #     self.motors[motor].Set_Value(robot,i)
         
