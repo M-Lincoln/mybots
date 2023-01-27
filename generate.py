@@ -33,6 +33,8 @@ def Generate_Brain():
 
 	pyrosim.Send_Motor_Neuron(name = 3 , jointName = "Torso_Backleg")	#motor neuron will send values to the motor controlling joint torso_backleg
 	pyrosim.Send_Motor_Neuron(name = 4 , jointName = "Torso_Frontleg")
+
+	pyrosim.Send_Synapse( sourceNeuronName = 0 , targetNeuronName=3 , weight=1.0)	#generate a synapse
 	pyrosim.End()
 
 Generate_Body(width,length,height)
