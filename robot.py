@@ -44,6 +44,4 @@ class ROBOT:
                 print(neuronName)
                 print(jointName)
                 print(desiredAngle)           
-        #for motor in self.motors:
-        #     self.motors[motor].Set_Value(robot,i)
         
