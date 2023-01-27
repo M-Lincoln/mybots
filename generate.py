@@ -16,23 +16,23 @@ Create_World(xworld,yworld,zworld,width,length,height) #you must put 6 variables
 def Generate_Body(width,length,height):
 	pyrosim.Start_URDF("body.urdf")
 	#create a robot with an abdomen and 2 legs:
-	pyrosim.Send_Cube(name="torso", pos=[0,0,1.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+	pyrosim.Send_Cube(name="Torso", pos=[0,0,1.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 	#create backleg
-	pyrosim.Send_Joint( name = "torso_backleg" , parent= "torso" , child = "backleg" , type = "revolute", position = [-0.5,0,1]) #Joint
-	pyrosim.Send_Cube(name="backleg", pos=[-0.5,0,-0.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+	pyrosim.Send_Joint( name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = [-0.5,0,1]) #Joint
+	pyrosim.Send_Cube(name="Backleg", pos=[-0.5,0,-0.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 	#create frontleg
-	pyrosim.Send_Joint( name = "torso_frontleg" , parent= "torso" , child = "frontleg" , type = "revolute", position = [0.5,0,1]) #Joint
-	pyrosim.Send_Cube(name="frontleg", pos=[0.5,0,-0.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+	pyrosim.Send_Joint( name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = [0.5,0,1]) #Joint
+	pyrosim.Send_Cube(name="Frontleg", pos=[0.5,0,-0.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 	pyrosim.End()
 
 def Generate_Brain():
 	pyrosim.Start_NeuralNetwork("brain.nndf")
-	pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "torso") #sensor neurons receive values from sensors. This neuron will receive a value from sensor stored in torso.
-	pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "backleg")	#sensor neuron attached to touch sensor in back leg
-	pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "frontleg")	#sensor neuron attached to touch sensor in front leg
+	pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso") #sensor neurons receive values from sensors. This neuron will receive a value from sensor stored in torso.
+	pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "Backleg")	#sensor neuron attached to touch sensor in back leg
+	pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "Frontleg")	#sensor neuron attached to touch sensor in front leg
 
-	pyrosim.Send_Motor_Neuron(name = 3 , jointName = "torso_backleg")	#motor neuron will send values to the motor controlling joint torso_backleg
-	pyrosim.Send_Motor_Neuron(name = 4 , jointName = "torso_frontleg")
+	pyrosim.Send_Motor_Neuron(name = 3 , jointName = "Torso_Backleg")	#motor neuron will send values to the motor controlling joint torso_backleg
+	pyrosim.Send_Motor_Neuron(name = 4 , jointName = "Torso_Frontleg")
 	pyrosim.End()
 
 Generate_Body(width,length,height)
