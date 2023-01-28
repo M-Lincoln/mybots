@@ -77,7 +77,7 @@ class NEURON:
             if(synapse[1]==self.Get_Name()):    #second item in tuple has index [1] because first item has index [0]
                 print("pre-synaptic neuron = ", synapse[0])               #finding each synapse (synapse[1]) arriving at this neuron (self.GetName())
                 print("post-synaptic neuron = ", synapse[1])
-        exit()
+        
 
 # -------------------------- Private methods -------------------------
 
