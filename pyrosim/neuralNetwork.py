@@ -18,8 +18,6 @@ class NEURAL_NETWORK:
 
         f.close()
 
-        print(self.synapses)
-        exit()
 
     def Print(self):
 
@@ -34,9 +32,9 @@ class NEURAL_NETWORK:
     def Update(self):
         for neuronName in self.neurons:
             if self.neurons[neuronName].Is_Sensor_Neuron():     #self.neurons[neuronName] is an instance of NEURON, sotred in the dictionary self.neurons
-                self.neurons[neuronName].Update_Sensor_Neuron()
+                self.neurons[neuronName].Update_Sensor_Neuron() #value of sensor neurons come from sensors
             else:   #is hidden or motor neuron
-                self.neurons[neuronName].Update_Hidden_Or_Motor_Neuron()
+                self.neurons[neuronName].Update_Hidden_Or_Motor_Neuron(self.neurons,self.synapses)    #value of hidden or motor neurons come from other neurons
 
     def Get_Neuron_Names(self):
         return self.neurons.keys()      #returns the neuron names
