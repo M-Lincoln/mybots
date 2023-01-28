@@ -1,7 +1,7 @@
 #generate.py
 ####to run this, go into terminal: 'python .\generate.py' so that it generates the box.sdf file in the specified path
 #use pyrosim to generate a link, store it in a special file called world.sdf, and then simulate.py will read and simulate it 
-from tkinter import END
+import numpy
 import pyrosim.pyrosim as pyrosim #import pyrosim
 length=1
 width=1
@@ -39,6 +39,9 @@ def Generate_Brain():
 	pyrosim.Send_Synapse( sourceNeuronName = 0 , targetNeuronName=4 , weight=1.0)	#generate a synapse b/w the torso sensor and the torso_frontleg motor
 	pyrosim.Send_Synapse( sourceNeuronName = 2 , targetNeuronName=4 , weight=0.25)	#generate a synapse b/w the frontleg sensor and the torso_frontleg motor
 
+	for i in range(3):
+		for j in range(3,5):
+			pyrosim.Send_Synapse( sourceNeuronName = i , targetNeuronName= j , weight=2*numpy.random.random()-1)	#generate a synapse b/w the ith sensor neuron and the jth motor neuron between range -1,1)
 
 	pyrosim.End()
 
