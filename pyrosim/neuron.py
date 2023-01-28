@@ -71,8 +71,8 @@ class NEURON:
 
     def Update_Hidden_Or_Motor_Neuron(self,neurons,synapses):
         self.Set_Value(0.0)   #don't know if this is right?? Task I.53
-        print("Neurons = ",neurons)
-        print("Synapses = ", synapses)
+        for key in synapses:
+            print(key)
         exit()
 
 # -------------------------- Private methods -------------------------
