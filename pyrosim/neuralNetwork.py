@@ -35,6 +35,7 @@ class NEURAL_NETWORK:
                 self.neurons[neuronName].Update_Sensor_Neuron() #value of sensor neurons come from sensors
             else:   #is hidden or motor neuron
                 self.neurons[neuronName].Update_Hidden_Or_Motor_Neuron(self.neurons,self.synapses)    #value of hidden or motor neurons come from other neurons
+        exit()
 
     def Get_Neuron_Names(self):
         return self.neurons.keys()      #returns the neuron names
