@@ -12,11 +12,14 @@ class NEURAL_NETWORK:
 
         f = open(nndfFileName,"r")
 
-        for line in f.readlines():
+        for line in f.readlines():      #each line from an nndf file are digested
 
             self.Digest(line)
 
         f.close()
+
+        print(self.synapses)
+        exit()
 
     def Print(self):
 
