@@ -71,13 +71,16 @@ class NEURON:
 
     def Update_Hidden_Or_Motor_Neuron(self,neurons,synapses):
         self.Set_Value(0.0)   #don't know if this is right?? Task I.53
-        print("Name of currently-updating neuron: ", self.Get_Name())
+        #print("Name of currently-updating neuron: ", self.Get_Name())
         for synapse in synapses.keys():
-            print(synapse)
-            if(synapse[1]==self.Get_Name()):    #second item in tuple has index [1] because first item has index [0]
-                print("pre-synaptic neuron = ", synapse[0])               #finding each synapse (synapse[1]) arriving at this neuron (self.GetName())
-                print("post-synaptic neuron = ", synapse[1])
-        
+            
+            if(synapse[1]==self.Get_Name()):     #finding each synapse (synapse[1]) arriving at this neuron (self.GetName()) #second item in tuple has index [1] because first item has index [0]
+                self.Allow_Presynaptic_Neuron_To_Influence_Me(synapses[synapse].Get_Weight(),neurons[synapse[0]].Get_Value())
+
+    def Allow_Presynaptic_Neuron_To_Influence_Me(self, weight, value):
+        print("weight = ", weight) 
+        print("value = ", value)
+        exit()
 
 # -------------------------- Private methods -------------------------
 
