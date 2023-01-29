@@ -38,6 +38,8 @@ def Generate_Brain():
 	pyrosim.Send_Synapse( sourceNeuronName = 1 , targetNeuronName=3 , weight=2.0)	#generate a synapse b/w the backleg sensor and the torso_backleg motor
 	pyrosim.Send_Synapse( sourceNeuronName = 0 , targetNeuronName=4 , weight=1.0)	#generate a synapse b/w the torso sensor and the torso_frontleg motor
 	pyrosim.Send_Synapse( sourceNeuronName = 2 , targetNeuronName=4 , weight=0.25)	#generate a synapse b/w the frontleg sensor and the torso_frontleg motor
+	pyrosim.Send_Synapse( sourceNeuronName = 1 , targetNeuronName=4 , weight=0.25)	#generate a synapse b/w the backleg sensor and the torso_frontleg motor
+	pyrosim.Send_Synapse( sourceNeuronName = 2 , targetNeuronName=3 , weight=0.25)	#generate a synapse b/w the frontleg sensor and the torso_backleg motor
 
 	for i in range(3):
 		for j in range(3,5):
