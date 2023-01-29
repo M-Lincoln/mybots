@@ -6,4 +6,4 @@ class HILL_CLIMBER:
         self.parent = SOLUTION()        #create an instance of SOLUTION
 
     def Evolve(self):
-        self.parent.Evaluate
+        self.parent.Evaluate()

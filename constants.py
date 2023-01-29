@@ -1,5 +1,13 @@
 #constants.py contains all of the constants being pulled in simulate.py
 from cmath import pi
+
+length=1
+width=1
+height=1
+xworld=5
+yworld=5
+zworld=height/2
+
 #create sin variables for front and back legs
 amplitude = pi/4 #pi/4 is good
 frequency = 10 #10 is good
