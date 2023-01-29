@@ -8,3 +8,4 @@ from hillclimber import HILL_CLIMBER
 #    index=index+1
 
 hc = HILL_CLIMBER()
+hc.Evolve()     #call Evolve() 
