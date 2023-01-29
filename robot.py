@@ -45,3 +45,5 @@ class ROBOT:
                 print(jointName)
                 print(desiredAngle)           
         
+    def Get_Fitness(self):
+        pass

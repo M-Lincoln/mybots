@@ -30,6 +30,8 @@ class SIMULATION:               #define a class, SIMULATION
             self.robot.Act(i)           #Then, act on the changes for each time step
             time.sleep(c.sleepTime)
             
+    def Get_Fitness(self):
+        self.robot.Get_Fitness()
         
     def __del__(self):      #so far, not calling this, so we are not saving any of our values
         p.disconnect()
