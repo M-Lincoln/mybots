@@ -22,7 +22,7 @@ class HILL_CLIMBER:
         self.child = copy.deepcopy(self.parent)     #self.child will receive a copy of self.parent's weights, as well as its fitness.
 
     def Mutate(self):
-        pass
+        self.child.Mutate()
 
     def Select(self):
         pass

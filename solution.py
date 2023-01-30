@@ -20,6 +20,11 @@ class SOLUTION:
 		self.fitness = float(fitnessFile.read())	#convert the incoming string to a float
 		fitnessFile.close()
 
+	def Mutate(self):
+		randomRow = numpy.random.randint(0,2)
+		randomColumn = numpy.random.randint(0,1)
+		self.weights[randomRow,randomColumn] = numpy.random.random()*2-1		#specifies a random element in self.weights (the weight of the synapse that connects the randomRow'th sensor neuron to the randomColumn'th motor neuron.)
+
 	def Create_World(self,x1,y1,z1,width,length,height):
 		pyrosim.Start_SDF("world.sdf") #tells pyrosim the name of the file where info about the world should be stored (in this case, it's a box)
 		pyrosim.Send_Cube(name="Box", pos=[x1,y1,z1] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in boxes.sdf
