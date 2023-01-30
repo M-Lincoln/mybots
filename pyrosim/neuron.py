@@ -71,7 +71,7 @@ class NEURON:
 
     def Update_Hidden_Or_Motor_Neuron(self,neurons,synapses):
         self.Set_Value(0.0)   #don't know if this is right?? Task I.53
-        print("Value of neuron before for loop: ", self.Get_Value())
+        #print("Value of neuron before for loop: ", self.Get_Value())
         for synapse in synapses.keys():
             
             if(synapse[1]==self.Get_Name()):     #finding each synapse (synapse[1]) arriving at this neuron (self.GetName()) #second item in tuple has index [1] because first item has index [0]

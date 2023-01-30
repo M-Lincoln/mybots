@@ -18,7 +18,7 @@ class ROBOT:
     def Prepare_To_Sense(self):
         self.sensors = {}   #create an empty dictionary for sensors because we will have multiple sensors for each robot
         for linkName in pyrosim.linkNamesToIndices:
-            print(linkName)
+            #print(linkName)
             self.sensors[linkName] = SENSOR(linkName) #try this so we can initiate a sensor instance
 
     def Sense(self,i):    #enable sensing in the robot
@@ -27,7 +27,7 @@ class ROBOT:
 
     def Prepare_To_Act(self):
         for jointName in pyrosim.jointNamesToIndices:
-            print(jointName)
+            #print(jointName)
             self.motors[jointName] = MOTOR(jointName)
 
     def Think(self):
@@ -41,9 +41,9 @@ class ROBOT:
                 desiredAngle = self.nn.Get_Value_of(neuronName)
                 jointNameByte = bytes(jointName, "utf-8")
                 self.motors[jointNameByte].Set_Value(desiredAngle,self.robotID)
-                print(neuronName)
-                print(jointName)
-                print(desiredAngle)           
+                #print(neuronName)
+                #print(jointName)
+                #print(desiredAngle)           
         
     def Get_Fitness(self):
         stateOfLinkZero = p.getLinkState(self.robotID,0)        #first argument = body ID of a body in the simulation, second argument = particular link we are interested in. First link = "0"
