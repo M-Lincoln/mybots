@@ -27,7 +27,7 @@ class NEURAL_NETWORK:
 
         self.Print_Motor_Neuron_Values()
 
-        print("")
+        #print("")
 
     def Update(self):
         for neuronName in self.neurons:
@@ -95,7 +95,7 @@ class NEURAL_NETWORK:
 
                 self.neurons[neuronName].Print()
 
-        print("")
+        #print("")
 
     def Print_Hidden_Neuron_Values(self):
 
@@ -107,7 +107,7 @@ class NEURAL_NETWORK:
 
                 self.neurons[neuronName].Print()
 
-        print("")
+        #print("")
 
     def Print_Motor_Neuron_Values(self):
 
@@ -119,4 +119,4 @@ class NEURAL_NETWORK:
 
                 self.neurons[neuronName].Print()
 
-        print("")
+        #print("")
