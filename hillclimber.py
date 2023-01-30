@@ -25,4 +25,7 @@ class HILL_CLIMBER:
         self.child.Mutate()
 
     def Select(self):
-        pass
+        #print("parent's fitness = ", self.parent.fitness)
+        #print("child's fitness = ", self.child.fitness)
+        if self.child.fitness>self.parent.fitness:      #replace the parent with its child if the parent does worse
+            self.parent = self.child
