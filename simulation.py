@@ -15,8 +15,13 @@ import motor
 
 
 class SIMULATION:               #define a class, SIMULATION
-    def __init__(self):         #defines the init constructor (AKA method) for the SIMULATION class
-        self.physicsClient = p.connect(p.DIRECT)
+    def __init__(self,directOrGUI):         #defines the init constructor (AKA method) for the SIMULATION class
+        self.directOrGUI = directOrGUI
+        if directOrGUI == "DIRECT":
+            self.physicsClient = p.connect(p.DIRECT)
+        else:
+            self.physicsClient = p.connect(p.GUI)
+
         self.world = WORLD()    #creates a new SIMULATION attribute, and that attribute will hold an instance of the WORLD class
         self.robot = ROBOT()    #creates a new SIMULATION attribute, and that attribute will hold an instance of the ROBOT class
         #self.robotID = p.loadURDF("body.urdf") #add a torso to the environment 
