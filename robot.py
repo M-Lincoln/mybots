@@ -9,7 +9,7 @@ from pyrosim.neuralNetwork import NEURAL_NETWORK
 class ROBOT:
     def __init__(self):
         self.motors = {}    #create an empty dictionary for motors because we will have multiple motors for each robot
-        self.robotID = p.loadURDF("body.urdf")
+        self.robotID = p.loadURDF("body.urdf")      #"body.urdf" is the unique ID of a body in the simulation
         pyrosim.Prepare_To_Simulate(self.robotID)
         self.Prepare_To_Sense()
         self.Prepare_To_Act()           
@@ -46,4 +46,10 @@ class ROBOT:
                 print(desiredAngle)           
         
     def Get_Fitness(self):
-        pass
+        stateOfLinkZero = p.getLinkState(self.robotID,0)        #first argument = body ID of a body in the simulation, second argument = particular link we are interested in. First link = "0"
+        positionOfLinkZero = stateOfLinkZero[0]                 #extract 1st tuple = position of the link
+        xCoordinateOfLinkZero = positionOfLinkZero[0]           #extract the x coordinate of the link's position
+        print("stateOfLinkZero = ", stateOfLinkZero)            
+        print("positionOfLinkZero = ", positionOfLinkZero) 
+        print("X coord OfLinkZero = ", xCoordinateOfLinkZero)
+        exit()
