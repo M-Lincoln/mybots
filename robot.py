@@ -49,6 +49,9 @@ class ROBOT:
         stateOfLinkZero = p.getLinkState(self.robotID,0)        #first argument = body ID of a body in the simulation, second argument = particular link we are interested in. First link = "0"
         positionOfLinkZero = stateOfLinkZero[0]                 #extract 1st tuple = position of the link
         xCoordinateOfLinkZero = positionOfLinkZero[0]           #extract the x coordinate of the link's position
+        f = open("fitness.txt", "w")
+        f.write(str(xCoordinateOfLinkZero))
+        f.close()
         print("stateOfLinkZero = ", stateOfLinkZero)            
         print("positionOfLinkZero = ", positionOfLinkZero) 
         print("X coord OfLinkZero = ", xCoordinateOfLinkZero)
