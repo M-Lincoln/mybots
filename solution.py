@@ -16,6 +16,9 @@ class SOLUTION:
 		self.Create_Body(c.width,c.length,c.height)
 		self.Create_Brain()
 		os.system("python .\simulate.py")
+		fitnessFile = open("fitness.txt","r")
+		self.fitness = float(fitnessFile.read())	#convert the incoming string to a float
+		fitnessFile.close()
 
 	def Create_World(self,x1,y1,z1,width,length,height):
 		pyrosim.Start_SDF("world.sdf") #tells pyrosim the name of the file where info about the world should be stored (in this case, it's a box)
