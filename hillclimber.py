@@ -10,8 +10,8 @@ class HILL_CLIMBER:
 
     def Evolve(self):
         self.parent.Evaluate("GUI")
-        #for currentGeneration in range(c.numberOfGenerations): 
-        for currentGeneration in range(3):  #view behavior of the FIRST randomly generated solution
+        for currentGeneration in range(c.numberOfGenerations): 
+        #for currentGeneration in range(3):  #view behavior of the FIRST randomly generated solution
             self.Evolve_For_One_Generation()
 
     def Evolve_For_One_Generation(self):
