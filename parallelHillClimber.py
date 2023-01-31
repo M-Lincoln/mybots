@@ -1,4 +1,4 @@
-#hillclimber.py
+#parallelHillClimber.py
 from solution import SOLUTION
 import constants as c
 import copy
@@ -6,11 +6,15 @@ import simulation
 
 class PARALLEL_HILL_CLIMBER:
     def __init__(self):
-        #self.parent = SOLUTION()        #create an instance of SOLUTION
-        pass
+        self.parents = {}        #create an empty dictionary to store multiple random parents for our parallel hillclimber
+        for parent in range(c.populationSize):
+            self.parents[parent]=SOLUTION()
+
 
     def Evolve(self):
-        #self.parent.Evaluate("GUI")
+        for parent in self.parents:
+            self.parents[parent].Evaluate("GUI")        #Evaluate each of the parents, one after the other
+
         #for currentGeneration in range(c.numberOfGenerations): 
         ##for currentGeneration in range(3):  #view behavior of the FIRST randomly generated solution
         #    self.Evolve_For_One_Generation()

@@ -10,10 +10,10 @@
     <synapse sourceNeuronName = "2" targetNeuronName = "4" weight = "0.25" />
     <synapse sourceNeuronName = "1" targetNeuronName = "4" weight = "0.25" />
     <synapse sourceNeuronName = "2" targetNeuronName = "3" weight = "0.25" />
-    <synapse sourceNeuronName = "0" targetNeuronName = "3" weight = "-0.656473395649176" />
-    <synapse sourceNeuronName = "0" targetNeuronName = "4" weight = "-0.14152452484982092" />
-    <synapse sourceNeuronName = "1" targetNeuronName = "3" weight = "-0.18236332425238566" />
-    <synapse sourceNeuronName = "1" targetNeuronName = "4" weight = "0.27658891752124726" />
-    <synapse sourceNeuronName = "2" targetNeuronName = "3" weight = "-0.7731565902463027" />
-    <synapse sourceNeuronName = "2" targetNeuronName = "4" weight = "-0.6180948533044959" />
+    <synapse sourceNeuronName = "0" targetNeuronName = "3" weight = "0.40404849719388714" />
+    <synapse sourceNeuronName = "0" targetNeuronName = "4" weight = "0.13418199699488254" />
+    <synapse sourceNeuronName = "1" targetNeuronName = "3" weight = "-0.043532209776010244" />
+    <synapse sourceNeuronName = "1" targetNeuronName = "4" weight = "0.44952991495852723" />
+    <synapse sourceNeuronName = "2" targetNeuronName = "3" weight = "0.7452415819481144" />
+    <synapse sourceNeuronName = "2" targetNeuronName = "4" weight = "-0.2256968899927907" />
 </neuralNetwork>
