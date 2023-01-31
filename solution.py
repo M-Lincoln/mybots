@@ -11,11 +11,11 @@ class SOLUTION:
 		self.weights = numpy.random.rand(3,2)     #create a 3x2 matrix filled with random numbers b/w 0 and 1. If you want the weight of the synapse that connects the third sensor neuron to the second motor neuron, for example, you would "walk down" to the third row, and then "walk right" to the second column.
 		self.weights = 2*self.weights-1          #shift range of random numbers to [-1,1]
 
-	def Evaluate(self):
+	def Evaluate(self,directOrGUI):
 		self.Create_World(c.xworld,c.yworld,c.zworld,c.width,c.length,c.height)
 		self.Create_Body(c.width,c.length,c.height)
 		self.Create_Brain()
-		os.system("python .\simulate.py DIRECT")
+		os.system("python .\simulate.py " + directOrGUI)
 		fitnessFile = open("fitness.txt","r")
 		self.fitness = float(fitnessFile.read())	#convert the incoming string to a float
 		fitnessFile.close()
