@@ -32,7 +32,8 @@ class SIMULATION:               #define a class, SIMULATION
             self.robot.Sense(i)       #call "Sense()" method, so robot can sense some of the changes that have occurred for each time step
             self.robot.Think()         #robot thinks each time step
             self.robot.Act(i)           #Then, act on the changes for each time step
-            time.sleep(c.sleepTime)
+            if self.directOrGUI == "GUI":
+                time.sleep(c.sleepTime)
             
     def Get_Fitness(self):
         self.robot.Get_Fitness()
