@@ -9,14 +9,15 @@ class HILL_CLIMBER:
         self.parent = SOLUTION()        #create an instance of SOLUTION
 
     def Evolve(self):
-        self.parent.Evaluate(simulation.directOrGUI)
-        for currentGeneration in range(c.numberOfGenerations)-1: #view behavior of the FIRST randomly generated solution
+        self.parent.Evaluate("DIRECT")
+        #for currentGeneration in range(c.numberOfGenerations): 
+        for currentGeneration in range(1):  #view behavior of the FIRST randomly generated solution
             self.Evolve_For_One_Generation()
 
     def Evolve_For_One_Generation(self):
         self.Spawn()
         self.Mutate()
-        self.child.Evaluate(simulation.directOrGUI)
+        self.child.Evaluate("DIRECT")
         self.Print()
         self.Select()
 
