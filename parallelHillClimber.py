@@ -6,7 +6,8 @@ import simulation
 
 class PARALLEL_HILL_CLIMBER:
     def __init__(self):
-        self.parent = SOLUTION()        #create an instance of SOLUTION
+        #self.parent = SOLUTION()        #create an instance of SOLUTION
+        pass
 
     def Evolve(self):
         #self.parent.Evaluate("GUI")
