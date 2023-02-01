@@ -27,17 +27,24 @@ class PARALLEL_HILL_CLIMBER:
         
 
     def Evolve_For_One_Generation(self):
-        #self.Spawn()
+        self.Spawn()
         #self.Mutate()
         #self.child.Evaluate("DIRECT")
         #self.Print()
         #self.Select()
-        pass
+        
 
     def Spawn(self):
-        self.child = copy.deepcopy(self.parent)     #self.child will receive a copy of self.parent's weights, as well as its fitness.
-        self.child.Set_ID(self.nextAvailableID)     #assign the child an ID
-        self.nextAvailableID=self.nextAvailableID+1 #increment up for the next available ID
+        self.children = {}      #create an empty dictionary for children
+        for parent in self.parents:
+            self.child = self.children[parent]
+            self.child = copy.deepcopy(parent)     #self.children will receive a copy of its parent's weights, as well as its fitness.
+            self.child.Set_ID(self.nextAvailableID)     #assign the child an ID
+            self.nextAvailableID=self.nextAvailableID+1 #increment up for the next available ID
+        print("Self.children[parent] = ", self.children[parent])
+        print("self.child = ", self.child)
+        exit()
+
     def Mutate(self):
         self.child.Mutate()
 
