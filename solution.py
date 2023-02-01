@@ -7,7 +7,8 @@ import os
 
 
 class SOLUTION:
-	def __init__(self):
+	def __init__(self,nextAvailableID):
+		self.myID = nextAvailableID
 		self.weights = numpy.random.rand(3,2)     #create a 3x2 matrix filled with random numbers b/w 0 and 1. If you want the weight of the synapse that connects the third sensor neuron to the second motor neuron, for example, you would "walk down" to the third row, and then "walk right" to the second column.
 		self.weights = 2*self.weights-1          #shift range of random numbers to [-1,1]
 
@@ -24,6 +25,10 @@ class SOLUTION:
 		randomRow = numpy.random.randint(0,2)
 		randomColumn = numpy.random.randint(0,1)
 		self.weights[randomRow,randomColumn] = numpy.random.random()*2-1		#specifies a random element in self.weights (the weight of the synapse that connects the randomRow'th sensor neuron to the randomColumn'th motor neuron.)
+
+	def Set_ID(self,ID):
+		self.myID = ID
+
 
 	def Create_World(self,x1,y1,z1,width,length,height):
 		pyrosim.Start_SDF("world.sdf") #tells pyrosim the name of the file where info about the world should be stored (in this case, it's a box)

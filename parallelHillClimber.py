@@ -6,9 +6,11 @@ import simulation
 
 class PARALLEL_HILL_CLIMBER:
     def __init__(self):
+        self.nextAvailableID = 0
         self.parents = {}        #create an empty dictionary to store multiple random parents for our parallel hillclimber
         for parent in range(c.populationSize):
-            self.parents[parent]=SOLUTION()
+            self.parents[parent]=SOLUTION(self.nextAvailableID)
+            self.nextAvailableID = self.nextAvailableID+1       #increment nextAvailableID by 1 after using it for one SOLUTION
 
 
     def Evolve(self):
@@ -29,7 +31,8 @@ class PARALLEL_HILL_CLIMBER:
 
     def Spawn(self):
         self.child = copy.deepcopy(self.parent)     #self.child will receive a copy of self.parent's weights, as well as its fitness.
-
+        self.child.Set_ID(self.nextAvailableID)     #assign the child an ID
+        self.nextAvailableID=self.nextAvailableID+1 #increment up for the next available ID
     def Mutate(self):
         self.child.Mutate()
 
