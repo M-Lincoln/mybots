@@ -27,4 +27,4 @@ sleepTime=0.005 #1/60 is better for longer simulation but not too long
 numberOfGenerations = 10
 
 #define size of population:
-populationSize = 2
+populationSize = 10
