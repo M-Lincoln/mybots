@@ -47,11 +47,13 @@ class ROBOT:
                 #print(jointName)
                 #print(desiredAngle)           
         
-    def Get_Fitness(self):
+    def Get_Fitness(self,solutionID):
         stateOfLinkZero = p.getLinkState(self.robotID,0)        #first argument = body ID of a body in the simulation, second argument = particular link we are interested in. First link = "0"
         positionOfLinkZero = stateOfLinkZero[0]                 #extract 1st tuple = position of the link
         xCoordinateOfLinkZero = positionOfLinkZero[0]           #extract the x coordinate of the link's position
-        f = open("fitness.txt", "w")
+        f = open("temp" + str(solutionID) + ".txt", "w")
+        os.system("rename tmp"+ str(solutionID) +".txt fitness" + str(solutionID) +".txt")
+        #os.rename("tmp" +str(solutionID)+ ".txt" ,"fitness"+str(solutionID)+".txt")
         f.write(str(xCoordinateOfLinkZero))
         f.close()
         #print("stateOfLinkZero = ", stateOfLinkZero)            

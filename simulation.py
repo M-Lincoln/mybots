@@ -35,8 +35,8 @@ class SIMULATION:               #define a class, SIMULATION
             if self.directOrGUI == "GUI":
                 time.sleep(c.sleepTime)
             
-    def Get_Fitness(self):
-        self.robot.Get_Fitness()
+    def Get_Fitness(self,solutionID):
+        self.robot.Get_Fitness(solutionID)
         
     def __del__(self):      #so far, not calling this, so we are not saving any of our values
         p.disconnect()

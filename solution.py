@@ -3,6 +3,7 @@ import pyrosim.pyrosim as pyrosim #import pyrosim
 import numpy
 import constants as c
 import os
+import time
 
 
 
@@ -17,9 +18,14 @@ class SOLUTION:
 		self.Create_Body(c.width,c.length,c.height)
 		self.Create_Brain()
 		os.system("start /B python .\simulate.py " + directOrGUI + " " + str(self.myID))	#causes simulate.py to run in the background while search.py continues to run w/out waiting for simulate.py to finish
-		fitnessFile = open("fitness.txt","r")
+		fitnessFileName = "fitness" + str(self.myID) +".txt"
+		while not os.path.exists(fitnessFileName):	#checks if the fitnessx.txt file exists. if not, it sleeps search.py for 1/100 of a second if that file can't be found. waiting for other portion of code to catch up
+			time.sleep(0.01)
+		fitnessFile = open("fitness" + str(self.myID) +".txt","r")
 		self.fitness = float(fitnessFile.read())	#convert the incoming string to a float
+		print(self.fitness)
 		fitnessFile.close()
+		
 
 	def Mutate(self):
 		randomRow = numpy.random.randint(0,2)
