@@ -28,6 +28,7 @@ class SOLUTION:
 		print("For Solution " + str(self.myID) + ":")
 		print("fitness value = ", self.fitness)
 		fitnessFile.close()
+		print("del fitness" + str(self.myID) + ".txt")
 		os.system("del fitness" + str(self.myID) + ".txt")	               #delete the fitnessx.txt file after it has been read, so we don't clutter our directory
 
 	def Mutate(self):
