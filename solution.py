@@ -15,7 +15,7 @@ class SOLUTION:
 		self.Create_World(c.xworld,c.yworld,c.zworld,c.width,c.length,c.height)
 		self.Create_Body(c.width,c.length,c.height)
 		self.Create_Brain()
-		os.system("python .\simulate.py "+ directOrGUI)
+		os.system("start /B python .\simulate.py "+ directOrGUI)	#causes simulate.py to run in the background while search.py continues to run w/out waiting for simulate.py to finish
 		fitnessFile = open("fitness.txt","r")
 		self.fitness = float(fitnessFile.read())	#convert the incoming string to a float
 		fitnessFile.close()
