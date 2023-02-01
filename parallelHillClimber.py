@@ -17,19 +17,19 @@ class PARALLEL_HILL_CLIMBER:
         for parent in self.parents:
             self.parents[parent].Start_Simulation("GUI")        #Evaluate each of the parents, one after the other
         for parent in self.parents:        #activating parallelism in Evolve()
-            self.parents[parent].Wait_For_Simulation_To_End()
-            
-        #for currentGeneration in range(c.numberOfGenerations): 
-        ##for currentGeneration in range(3):  #view behavior of the FIRST randomly generated solution
-        #    self.Evolve_For_One_Generation()
+            self.parents[parent].Wait_For_Simulation_To_End() 
+        for currentGeneration in range(c.numberOfGenerations): 
+        #for currentGeneration in range(3):  #view behavior of the FIRST randomly generated solution
+            self.Evolve_For_One_Generation()
         
 
     def Evolve_For_One_Generation(self):
-        self.Spawn()
-        self.Mutate()
-        self.child.Evaluate("DIRECT")
-        self.Print()
-        self.Select()
+        #self.Spawn()
+        #self.Mutate()
+        #self.child.Evaluate("DIRECT")
+        #self.Print()
+        #self.Select()
+        pass
 
     def Spawn(self):
         self.child = copy.deepcopy(self.parent)     #self.child will receive a copy of self.parent's weights, as well as its fitness.
