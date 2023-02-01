@@ -23,7 +23,7 @@ class SOLUTION:
 			time.sleep(0.01)
 		fitnessFile = open("fitness" + str(self.myID) +".txt","r")
 		self.fitness = float(fitnessFile.read())	#convert the incoming string to a float
-		print(self.fitness)
+		print("fitness value = ", self.fitness)
 		fitnessFile.close()
 		
 
