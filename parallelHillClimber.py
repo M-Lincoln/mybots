@@ -16,11 +16,13 @@ class PARALLEL_HILL_CLIMBER:
     def Evolve(self):
         for parent in self.parents:
             self.parents[parent].Start_Simulation("GUI")        #Evaluate each of the parents, one after the other
-
+        for parent in self.parents:
+            self.parents[parent].Wait_For_Simulation_To_End()
+            
         #for currentGeneration in range(c.numberOfGenerations): 
         ##for currentGeneration in range(3):  #view behavior of the FIRST randomly generated solution
         #    self.Evolve_For_One_Generation()
-        pass
+        
 
     def Evolve_For_One_Generation(self):
         self.Spawn()
