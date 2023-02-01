@@ -2,10 +2,13 @@
 from solution import SOLUTION
 import constants as c
 import copy
+import os
 import simulation
 
 class PARALLEL_HILL_CLIMBER:
     def __init__(self):
+        os.system("del brain*.nndf")    #delete all remaining fitness and brain files in case of any previous crashes
+        os.system("del fitness*.txt")
         self.nextAvailableID = 0
         self.parents = {}        #create an empty dictionary to store multiple random parents for our parallel hillclimber
         for parent in range(c.populationSize):
