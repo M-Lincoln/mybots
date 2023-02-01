@@ -16,7 +16,7 @@ class SOLUTION:
 		self.Create_World(c.xworld,c.yworld,c.zworld,c.width,c.length,c.height)
 		self.Create_Body(c.width,c.length,c.height)
 		self.Create_Brain()
-		os.system("start /B python .\simulate.py "+ directOrGUI)	#causes simulate.py to run in the background while search.py continues to run w/out waiting for simulate.py to finish
+		os.system("start /B python .\simulate.py " + directOrGUI + " " + str(self.myID))	#causes simulate.py to run in the background while search.py continues to run w/out waiting for simulate.py to finish
 		fitnessFile = open("fitness.txt","r")
 		self.fitness = float(fitnessFile.read())	#convert the incoming string to a float
 		fitnessFile.close()
@@ -28,7 +28,6 @@ class SOLUTION:
 
 	def Set_ID(self,ID):
 		self.myID = ID
-
 
 	def Create_World(self,x1,y1,z1,width,length,height):
 		pyrosim.Start_SDF("world.sdf") #tells pyrosim the name of the file where info about the world should be stored (in this case, it's a box)
@@ -47,7 +46,7 @@ class SOLUTION:
 		pyrosim.End()
 
 	def Create_Brain(self):
-		pyrosim.Start_NeuralNetwork("brain.nndf")
+		pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")		#creating a unique brain for each child and parent
 		pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso") #sensor neurons receive values from sensors. This neuron will receive a value from sensor stored in torso.
 		pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "Backleg")	#sensor neuron attached to touch sensor in back leg
 		pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "Frontleg")	#sensor neuron attached to touch sensor in front leg
