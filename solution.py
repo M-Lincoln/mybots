@@ -18,7 +18,7 @@ class SOLUTION:
 		self.Create_Body(c.width,c.length,c.height)
 		self.Create_Brain()
 		os.system("start /B python .\simulate.py " + directOrGUI + " " + str(self.myID))	#causes simulate.py to run in the background while search.py continues to run w/out waiting for simulate.py to finish
-		fitnessFileName = "fitness" + str(self.myID) +".txt"
+		fitnessFileName = "fitness" + str(self.myID) + ".txt"
 		while not os.path.exists(fitnessFileName):	#checks if the fitnessx.txt file exists. if not, it sleeps search.py for 1/100 of a second if that file can't be found. waiting for other portion of code to catch up
 			time.sleep(0.01)
 		fitnessFile = open("fitness" + str(self.myID) +".txt","r")
