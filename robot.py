@@ -15,7 +15,7 @@ class ROBOT:
         self.Prepare_To_Sense()
         self.Prepare_To_Act()           
         self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")      #create a neural network (self.nn) and add any neurons and synapses to it from brain(solutionID).nndf
-        os.system("del brain" + str(solutionID) + ".nndf")	               #delete the nndf file after it has been read, so we don't clutter our directory
+       # os.system("del brain" + str(solutionID) + ".nndf")	               #delete the nndf file after it has been read, so we don't clutter our directory
 
     def Prepare_To_Sense(self):
         self.sensors = {}   #create an empty dictionary for sensors because we will have multiple sensors for each robot
