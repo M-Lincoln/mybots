@@ -25,8 +25,8 @@ class SOLUTION:
 			time.sleep(0.01)
 		fitnessFile = open("fitness" + str(self.myID) +".txt","r")
 		self.fitness = float(fitnessFile.read())	#convert the incoming string to a float
-		print("For Solution " + str(self.myID) + ":")
-		print("fitness value = ", self.fitness)
+		#print("For Solution " + str(self.myID) + ":")
+		#print("fitness value = ", self.fitness)
 		fitnessFile.close()
 		#print("del fitness" + str(self.myID) + ".txt")
 		os.system("del fitness" + str(self.myID) + ".txt")	               #delete the fitnessx.txt file after it has been read, so we don't clutter our directory

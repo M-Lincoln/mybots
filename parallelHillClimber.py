@@ -22,7 +22,6 @@ class PARALLEL_HILL_CLIMBER:
         for parent in self.parents:        #activating parallelism in Evolve()
             self.parents[parent].Wait_For_Simulation_To_End()
         self.Evaluate(self.parents)
-        exit()
         for currentGeneration in range(c.numberOfGenerations): 
         #for currentGeneration in range(3):  #view behavior of the FIRST randomly generated solution
             self.Evolve_For_One_Generation()
@@ -61,6 +60,6 @@ class PARALLEL_HILL_CLIMBER:
 
     def Evaluate(self,solutions):
         for parent in solutions:
-            solutions[parent].Start_Simulation("GUI")        #Evaluate each of the parents, one after the other
+            solutions[parent].Start_Simulation("DIRECT")        #Evaluate each of the parents, one after the other
         for parent in solutions:        #activating parallelism in Evolve()
             solutions[parent].Wait_For_Simulation_To_End() 
