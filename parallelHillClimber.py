@@ -37,13 +37,10 @@ class PARALLEL_HILL_CLIMBER:
     def Spawn(self):
         self.children = {}      #create an empty dictionary for children
         for parent in self.parents:
-            self.child = self.children[parent]
-            self.child = copy.deepcopy(parent)     #self.children will receive a copy of its parent's weights, as well as its fitness.
-            self.child.Set_ID(self.nextAvailableID)     #assign the child an ID
+            self.children[parent] = copy.deepcopy(parent)     #self.children will receive a copy of its parent's weights, as well as its fitness.
+            print("Self.children[parent]= ", self.children[parent])
+            self.children[parent]=SOLUTION(self.nextAvailableID)
             self.nextAvailableID=self.nextAvailableID+1 #increment up for the next available ID
-        print("Self.children[parent] = ", self.children[parent])
-        print("self.child = ", self.child)
-        exit()
 
     def Mutate(self):
         self.child.Mutate()
