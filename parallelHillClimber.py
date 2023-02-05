@@ -14,6 +14,7 @@ class PARALLEL_HILL_CLIMBER:
         for parent in range(c.populationSize):
             self.parents[parent]=SOLUTION(self.nextAvailableID)
             self.nextAvailableID = self.nextAvailableID+1       #increment nextAvailableID by 1 after using it for one SOLUTION
+            #print("self.parents[parent] at start = ",self.parents[parent])
 
 
     def Evolve(self):
@@ -25,7 +26,7 @@ class PARALLEL_HILL_CLIMBER:
         for currentGeneration in range(c.numberOfGenerations): 
         #for currentGeneration in range(3):  #view behavior of the FIRST randomly generated solution
             self.Evolve_For_One_Generation()
-        
+            #print("self.parents[parent] at Evolve() = ",self.parents[parent])
 
     def Evolve_For_One_Generation(self):
         self.Spawn()
@@ -39,7 +40,7 @@ class PARALLEL_HILL_CLIMBER:
         self.children = {}      #create an empty dictionary for children
         for parent in self.parents:
             self.children[parent] = copy.deepcopy(parent)     #self.children will receive a copy of its parent's weights, as well as its fitness.
-            print("Self.children[parent]= ", self.children[parent])
+            #print("Self.children[parent]= ", self.children[parent])
             self.children[parent]=SOLUTION(self.nextAvailableID)
             self.nextAvailableID=self.nextAvailableID+1 #increment up for the next available ID
 
@@ -51,18 +52,23 @@ class PARALLEL_HILL_CLIMBER:
         for parent in self.parents:
             if self.children[parent].fitness<self.parents[parent].fitness:      #replace the parent with its child if the parent does worse
                 self.parents[parent] = self.children[parent]
+        #print("self.parents[parent] at select() = ",self.parents[parent])
 
     def Print(self):
         print(" ")
         for parent in self.parents:
             print("parent's fitness = ", self.parents[parent].fitness, "; child's fitness = ", self.children[parent].fitness)       #print the fitness of parent and child
             print(" ")
-    def Show_Best(self):
-        #self.parent.Evaluate("GUI")     #try to evaluate the parent with graphics turned on
-        pass
 
+    def Show_Best(self):
+        print("self.nextAvailableID = ", self.nextAvailableID)
+        for parent in self.parents:
+            if self.nextAvailableID ==6: #c.numberOfGenerations:
+                self.parents[parent].Start_Simulation("GUI")     #try to evaluate the parent with graphics turned on
+            
     def Evaluate(self,solutions):
         for parent in solutions:
             solutions[parent].Start_Simulation("DIRECT")        #Evaluate each of the parents, one after the other
+
         for parent in solutions:        #activating parallelism in Evolve()
             solutions[parent].Wait_For_Simulation_To_End() 
