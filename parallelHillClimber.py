@@ -9,17 +9,17 @@ class PARALLEL_HILL_CLIMBER:
     def __init__(self):
         os.system("del brain*.nndf")    #delete all remaining fitness and brain files in case of any previous crashes
         os.system("del fitness*.txt")
-        self.nextAvailableID = 0
+        self.nextAvailableID = 0 
         self.parents = {}        #create an empty dictionary to store multiple random parents for our parallel hillclimber
         for parent in range(c.populationSize):
             self.parents[parent]=SOLUTION(self.nextAvailableID)
-            self.nextAvailableID = self.nextAvailableID+1       #increment nextAvailableID by 1 after using it for one SOLUTION
+            self.nextAvailableID = self.nextAvailableID+1        #increment nextAvailableID by 1 after using it for one SOLUTION
             #print("self.parents[parent] at start = ",self.parents[parent])
 
 
     def Evolve(self):
         for parent in self.parents:
-            self.parents[parent].Start_Simulation("GUI")        #Evaluate each of the parents, one after the other
+            self.parents[parent].Start_Simulation("DIRECT")        #Evaluate each of the parents, one after the other
         for parent in self.parents:        #activating parallelism in Evolve()
             self.parents[parent].Wait_For_Simulation_To_End()
         self.Evaluate(self.parents)
@@ -44,6 +44,7 @@ class PARALLEL_HILL_CLIMBER:
             self.children[parent]=SOLUTION(self.nextAvailableID)
             self.nextAvailableID=self.nextAvailableID+1 #increment up for the next available ID
 
+
     def Mutate(self):
         for child in self.children:
             self.children[child].Mutate()
@@ -61,10 +62,17 @@ class PARALLEL_HILL_CLIMBER:
             print(" ")
 
     def Show_Best(self):
+        print(" ")
+        print("****************")
         print("self.nextAvailableID = ", self.nextAvailableID)
+        print(" ")
+        print("****************")
+        print(" ")
         for parent in self.parents:
-            if self.nextAvailableID ==6: #c.numberOfGenerations:
-                self.parents[parent].Start_Simulation("GUI")     #try to evaluate the parent with graphics turned on
+            if self.nextAvailableID == 30:
+                print("self.parents[parent] = ",self.parents[parent])
+        last_solution = self.parents[self.nextAvailableID-1]
+        self.parents[last_solution].Start_Simulation("GUI")     #try to evaluate the parent with graphics turned on
             
     def Evaluate(self,solutions):
         for parent in solutions:

@@ -9,7 +9,7 @@ class HILL_CLIMBER:
         self.parent = SOLUTION()        #create an instance of SOLUTION
 
     def Evolve(self):
-        self.parent.Evaluate("GUI")
+        self.parent.Evaluate("DIRECT")
         for currentGeneration in range(c.numberOfGenerations): 
         #for currentGeneration in range(3):  #view behavior of the FIRST randomly generated solution
             self.Evolve_For_One_Generation()
