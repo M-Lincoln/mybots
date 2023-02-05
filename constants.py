@@ -24,7 +24,7 @@ defineMaxForce = 35
 sleepTime=0.005 #1/60 is better for longer simulation but not too long
 
 #define the number of Generations for evolution:
-numberOfGenerations = 5
+numberOfGenerations = 3
 
 #define size of population:
-populationSize = 5
+populationSize = 3

@@ -62,17 +62,12 @@ class PARALLEL_HILL_CLIMBER:
             print(" ")
 
     def Show_Best(self):
-        print(" ")
-        print("****************")
-        print("self.nextAvailableID = ", self.nextAvailableID)
-        print(" ")
-        print("****************")
-        print(" ")
-        for parent in self.parents:
-            if self.nextAvailableID == 30:
-                print("self.parents[parent] = ",self.parents[parent])
-        last_solution = self.parents[self.nextAvailableID-1]
-        self.parents[last_solution].Start_Simulation("GUI")     #try to evaluate the parent with graphics turned on
+        all_solution = self.parents.items()
+        lowest_fitness = min(all_solution, key = lambda x: x[1].fitness)
+        lowest_parent = lowest_fitness[1]
+        lowest_parent.Start_Simulation("GUI")
+        print("lowest_parent = ",lowest_parent)
+        print("lowest_fitness = ", lowest_fitness)
             
     def Evaluate(self,solutions):
         for parent in solutions:
