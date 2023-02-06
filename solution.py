@@ -46,7 +46,7 @@ class SOLUTION:
 	def Create_Body(self,width,length,height):
 		pyrosim.Start_URDF("body.urdf")
 		#create a robot with an abdomen and 2 legs:
-		pyrosim.Send_Cube(name="Torso", pos=[0,0,1.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		pyrosim.Send_Cube(name="Torso", pos=[0,0,1] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 		#create backleg
 		pyrosim.Send_Joint( name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = [-0.5,0,1]) #Joint
 		pyrosim.Send_Cube(name="Backleg", pos=[-0.5,0,-0.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
