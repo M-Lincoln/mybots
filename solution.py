@@ -73,6 +73,9 @@ class SOLUTION:
 		#create rightleg
 		pyrosim.Send_Joint( name = "Torso_Rightleg" , parent= "Torso" , child = "Rightleg" , type = "revolute", position = [0.5,0,1], jointAxis = "0 1 0") #Joint
 		pyrosim.Send_Cube(name="Rightleg", pos=[0.5,0,0] , size=[1,0.2,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		#create LowerRightLeg
+		pyrosim.Send_Joint( name = "RightLeg_LowerRightLeg" , parent= "Rightleg" , child = "LowerRightLeg" , type = "revolute", position = [1,0,0], jointAxis = "0 1 0") #Joint
+		pyrosim.Send_Cube(name="LowerRightLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1])
 		pyrosim.End()
 
 	def Create_Brain(self):
