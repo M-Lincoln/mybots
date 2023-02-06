@@ -14,8 +14,8 @@ class SOLUTION:
 		self.weights = 2*self.weights-1          #shift range of random numbers to [-1,1]
 		
 	def Start_Simulation(self,directOrGUI):
-		self.Create_World(c.xworld,c.yworld,c.zworld,c.width,c.length,c.height)
-		self.Create_Body(c.width,c.length,c.height)
+		self.Create_World()
+		self.Create_Body()
 		self.Create_Brain()
 		os.system("start /B python .\simulate.py " + directOrGUI + " " + str(self.myID))	#causes simulate.py to run in the background while search.py continues to run w/out waiting for simulate.py to finish
 
@@ -39,20 +39,21 @@ class SOLUTION:
 	def Set_ID(self,ID):
 		self.myID = ID
 
-	def Create_World(self,x1,y1,z1,width,length,height):
+	def Create_World(self):
 		pyrosim.Start_SDF("world.sdf") #tells pyrosim the name of the file where info about the world should be stored (in this case, it's a box)
-		pyrosim.Send_Cube(name="Box", pos=[x1,y1,z1] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in boxes.sdf
+		pyrosim.Send_Cube(name="Box", pos=[c.xworld,c.yworld,c.zworld] , size=[c.width,c.length,c.height]) #stores a box with initial position x, y, z and length, width, and height, in boxes.sdf
 		pyrosim.End() #tells pyrosim to close the sdf file
-	def Create_Body(self,width,length,height):
+
+	def Create_Body(self):
 		pyrosim.Start_URDF("body.urdf")
 		#create a robot with an abdomen and 2 legs:
-		pyrosim.Send_Cube(name="Torso", pos=[0,0,1] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		pyrosim.Send_Cube(name="Torso", pos=[0,0,1] , size=[c.width,c.length,c.height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 		#create backleg
 		pyrosim.Send_Joint( name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = [-0.5,0,1]) #Joint
-		pyrosim.Send_Cube(name="Backleg", pos=[-0.5,0,-0.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		pyrosim.Send_Cube(name="Backleg", pos=[-0.5,0,-0.5] , size=[c.width,c.length,c.height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 		#create frontleg
-		pyrosim.Send_Joint( name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = [0.5,0,1]) #Joint
-		pyrosim.Send_Cube(name="Frontleg", pos=[0.5,0,-0.5] , size=[width,length,height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		pyrosim.Send_Joint( name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = [0,0.5,1]) #Joint
+		pyrosim.Send_Cube(name="Frontleg", pos=[0,0.5,0] , size=[0.2,1,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 		pyrosim.End()
 
 	def Create_Brain(self):
