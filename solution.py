@@ -10,7 +10,7 @@ import time
 class SOLUTION:
 	def __init__(self,nextAvailableID):
 		self.myID = nextAvailableID
-		self.weights = numpy.random.rand(3,2)     #create a 3x2 matrix filled with random numbers b/w 0 and 1. If you want the weight of the synapse that connects the third sensor neuron to the second motor neuron, for example, you would "walk down" to the third row, and then "walk right" to the second column.
+		self.weights = numpy.random.rand(c.numSensorNeurons,c.numMotorNeurons)     #create a 3x2 matrix filled with random numbers b/w 0 and 1. If you want the weight of the synapse that connects the third sensor neuron to the second motor neuron, for example, you would "walk down" to the third row, and then "walk right" to the second column.
 		self.weights = 2*self.weights-1          #shift range of random numbers to [-1,1]
 		
 	def Start_Simulation(self,directOrGUI):
@@ -32,7 +32,7 @@ class SOLUTION:
 		os.system("del fitness" + str(self.myID) + ".txt")	               #delete the fitnessx.txt file after it has been read, so we don't clutter our directory
 
 	def Mutate(self):
-		randomRow = numpy.random.randint(0,2)
+		randomRow = numpy.random.randint(0,c.numMotorNeurons)
 		randomColumn = numpy.random.randint(0,1)
 		self.weights[randomRow,randomColumn] = numpy.random.random()*2-1		#specifies a random element in self.weights (the weight of the synapse that connects the randomRow'th sensor neuron to the randomColumn'th motor neuron.)
 
@@ -71,8 +71,9 @@ class SOLUTION:
 		pyrosim.Send_Synapse( sourceNeuronName = 1 , targetNeuronName=4 , weight=0.25)	#generate a synapse b/w the backleg sensor and the torso_frontleg motor
 		pyrosim.Send_Synapse( sourceNeuronName = 2 , targetNeuronName=3 , weight=0.25)	#generate a synapse b/w the frontleg sensor and the torso_backleg motor
 
-		for i in range(3):
-			for j in range(3,5):
-				pyrosim.Send_Synapse( sourceNeuronName = i , targetNeuronName= j , weight=2*numpy.random.random()-1)	#generate a synapse b/w the ith sensor neuron and the jth motor neuron between range -1,1)
+		for currentRow in range(c.numSensorNeurons):
+			for currentColumn in range(c.numSensorNeurons,c.numSensorNeurons+c.numMotorNeurons):
+				pyrosim.Send_Synapse( sourceNeuronName = currentRow , targetNeuronName= currentColumn , weight=2*numpy.random.random()-1)	#generate a synapse b/w the ith sensor neuron and the jth motor neuron between range -1,1)
 
 		pyrosim.End()
+		exit()
