@@ -46,8 +46,9 @@ class SOLUTION:
 
 	def Create_Body(self):
 		pyrosim.Start_URDF("body.urdf")
-		#create a robot with an abdomen and 2 legs:
+		#create a robot with an abdomen:
 		pyrosim.Send_Cube(name="Torso", pos=[0,0,1] , size=[c.width,c.length,c.height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		
 		#create backleg
 		pyrosim.Send_Joint( name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = [0,-0.5,1], jointAxis = "1 0 0") #Joint
 		pyrosim.Send_Cube(name="Backleg", pos=[0,-0.5,0] , size=[0.2,1,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
@@ -65,7 +66,10 @@ class SOLUTION:
 		#create leftleg
 		pyrosim.Send_Joint( name = "Torso_Leftleg" , parent= "Torso" , child = "Leftleg" , type = "revolute", position = [-0.5,0,1], jointAxis = "0 1 0") #Joint
 		pyrosim.Send_Cube(name="Leftleg", pos=[-0.5,0,0] , size=[1,0.2,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
-		
+		#create LowerLeftLeg
+		pyrosim.Send_Joint( name = "LeftLeg_LowerLeftLeg" , parent= "Leftleg" , child = "LowerLeftLeg" , type = "revolute", position = [-1,0,0], jointAxis = "0 1 0") #Joint
+		pyrosim.Send_Cube(name="LowerLeftLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1])
+
 		#create rightleg
 		pyrosim.Send_Joint( name = "Torso_Rightleg" , parent= "Torso" , child = "Rightleg" , type = "revolute", position = [0.5,0,1], jointAxis = "0 1 0") #Joint
 		pyrosim.Send_Cube(name="Rightleg", pos=[0.5,0,0] , size=[1,0.2,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
