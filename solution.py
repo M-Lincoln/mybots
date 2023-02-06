@@ -54,6 +54,12 @@ class SOLUTION:
 		#create frontleg
 		pyrosim.Send_Joint( name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = [0,0.5,1], jointAxis = "1 0 0") #Joint
 		pyrosim.Send_Cube(name="Frontleg", pos=[0,0.5,0] , size=[0.2,1,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		#create leftleg
+		pyrosim.Send_Joint( name = "Torso_Leftleg" , parent= "Torso" , child = "Leftleg" , type = "revolute", position = [-0.5,0,1], jointAxis = "0 1 0") #Joint
+		pyrosim.Send_Cube(name="Leftleg", pos=[-0.5,0,0] , size=[1,0.2,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		##create rightleg
+		#pyrosim.Send_Joint( name = "Torso_Leftleg" , parent= "Torso" , child = "Leftleg" , type = "revolute", position = [-0.5,0,1], jointAxis = "1 0 0") #Joint
+		#pyrosim.Send_Cube(name="Frontleg", pos=[-0.5,0,0] , size=[1,0.2,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 		pyrosim.End()
 
 	def Create_Brain(self):
@@ -61,20 +67,15 @@ class SOLUTION:
 		pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso") #sensor neurons receive values from sensors. This neuron will receive a value from sensor stored in torso.
 		pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "Backleg")	#sensor neuron attached to touch sensor in back leg
 		pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "Frontleg")	#sensor neuron attached to touch sensor in front leg
+		pyrosim.Send_Sensor_Neuron(name = 3 , linkName = "Leftleg")	#sensor neuron attached to touch sensor in left leg
 
-		pyrosim.Send_Motor_Neuron(name = 3 , jointName = "Torso_Backleg")	#motor neuron will send values to the motor controlling joint torso_backleg
-		pyrosim.Send_Motor_Neuron(name = 4 , jointName = "Torso_Frontleg")
-
-		pyrosim.Send_Synapse( sourceNeuronName = 0 , targetNeuronName=3 , weight=1.0)	#generate a synapse b/w the torso sensor and the torso_backleg motor
-		pyrosim.Send_Synapse( sourceNeuronName = 1 , targetNeuronName=3 , weight=2.0)	#generate a synapse b/w the backleg sensor and the torso_backleg motor
-		pyrosim.Send_Synapse( sourceNeuronName = 0 , targetNeuronName=4 , weight=1.0)	#generate a synapse b/w the torso sensor and the torso_frontleg motor
-		pyrosim.Send_Synapse( sourceNeuronName = 2 , targetNeuronName=4 , weight=0.25)	#generate a synapse b/w the frontleg sensor and the torso_frontleg motor
-		pyrosim.Send_Synapse( sourceNeuronName = 1 , targetNeuronName=4 , weight=0.25)	#generate a synapse b/w the backleg sensor and the torso_frontleg motor
-		pyrosim.Send_Synapse( sourceNeuronName = 2 , targetNeuronName=3 , weight=0.25)	#generate a synapse b/w the frontleg sensor and the torso_backleg motor
+		pyrosim.Send_Motor_Neuron(name = 4 , jointName = "Torso_Backleg")	#motor neuron will send values to the motor controlling joint torso_backleg
+		pyrosim.Send_Motor_Neuron(name = 5 , jointName = "Torso_Frontleg")
+		pyrosim.Send_Motor_Neuron(name = 6 , jointName = "Torso_Leftleg")
 
 		for currentRow in range(c.numSensorNeurons):
-			for currentColumn in range(c.numSensorNeurons,c.numSensorNeurons+c.numMotorNeurons):
-				pyrosim.Send_Synapse( sourceNeuronName = currentRow , targetNeuronName= currentColumn , weight=2*numpy.random.random()-1)	#generate a synapse b/w the ith sensor neuron and the jth motor neuron between range -1,1)
+			for currentColumn in range(c.numMotorNeurons):
+				pyrosim.Send_Synapse(sourceNeuronName = currentRow , targetNeuronName= currentColumn + c.numSensorNeurons , weight=2*numpy.random.random()-1)	#generate a synapse b/w the ith sensor neuron and the jth motor neuron between range -1,1)
 
 		pyrosim.End()
 		

@@ -9,8 +9,8 @@ yworld=5
 zworld=height/2
 
 #define number of sensor neurons and motor neurons
-numSensorNeurons = 3
-numMotorNeurons = 2
+numSensorNeurons = 4
+numMotorNeurons = 3
 
 #create sin variables for front and back legs
 amplitude = pi/4 #pi/4 is good
