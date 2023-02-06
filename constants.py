@@ -12,7 +12,10 @@ zworld=height/2
 numSensorNeurons = 8
 numMotorNeurons = 7
 
-#create sin variables for front and back legs
+#create motor joint angle range for the legs' joints:
+motorJointRange = 0.2
+
+#create sin variables for legs
 amplitude = pi/4 #pi/4 is good
 frequency = 10 #10 is good
 offset = 0
