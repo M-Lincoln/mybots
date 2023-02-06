@@ -76,4 +76,4 @@ class SOLUTION:
 				pyrosim.Send_Synapse( sourceNeuronName = currentRow , targetNeuronName= currentColumn , weight=2*numpy.random.random()-1)	#generate a synapse b/w the ith sensor neuron and the jth motor neuron between range -1,1)
 
 		pyrosim.End()
-		exit()
+		
