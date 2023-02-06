@@ -67,15 +67,15 @@ class SOLUTION:
 		pyrosim.Send_Joint( name = "Torso_Leftleg" , parent= "Torso" , child = "Leftleg" , type = "revolute", position = [-0.5,0,1], jointAxis = "0 1 0") #Joint
 		pyrosim.Send_Cube(name="Leftleg", pos=[-0.5,0,0] , size=[1,0.2,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 		#create LowerLeftLeg
-		pyrosim.Send_Joint( name = "LeftLeg_LowerLeftLeg" , parent= "Leftleg" , child = "LowerLeftLeg" , type = "revolute", position = [-1,0,0], jointAxis = "0 1 0") #Joint
-		pyrosim.Send_Cube(name="LowerLeftLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1])
+		pyrosim.Send_Joint( name = "LeftLeg_LeftLowerLeg" , parent= "Leftleg" , child = "LeftLowerLeg" , type = "revolute", position = [-1,0,0], jointAxis = "0 1 0") #Joint
+		pyrosim.Send_Cube(name="LeftLowerLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1])
 
 		#create rightleg
 		pyrosim.Send_Joint( name = "Torso_Rightleg" , parent= "Torso" , child = "Rightleg" , type = "revolute", position = [0.5,0,1], jointAxis = "0 1 0") #Joint
 		pyrosim.Send_Cube(name="Rightleg", pos=[0.5,0,0] , size=[1,0.2,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 		#create LowerRightLeg
-		pyrosim.Send_Joint( name = "RightLeg_LowerRightLeg" , parent= "Rightleg" , child = "LowerRightLeg" , type = "revolute", position = [1,0,0], jointAxis = "0 1 0") #Joint
-		pyrosim.Send_Cube(name="LowerRightLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1])
+		pyrosim.Send_Joint( name = "RightLeg_RightLowerLeg" , parent= "Rightleg" , child = "RightLowerLeg" , type = "revolute", position = [1,0,0], jointAxis = "0 1 0") #Joint
+		pyrosim.Send_Cube(name="RightLowerLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1])
 		pyrosim.End()
 
 	def Create_Brain(self):
@@ -84,10 +84,18 @@ class SOLUTION:
 		pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "Backleg")	#sensor neuron attached to touch sensor in back leg
 		pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "Frontleg")	#sensor neuron attached to touch sensor in front leg
 		pyrosim.Send_Sensor_Neuron(name = 3 , linkName = "Leftleg")	#sensor neuron attached to touch sensor in left leg
+		pyrosim.Send_Sensor_Neuron(name = 4 , linkName = "BackLowerLeg")
+		pyrosim.Send_Sensor_Neuron(name = 5 , linkName = "FrontLowerLeg")
+		pyrosim.Send_Sensor_Neuron(name = 6 , linkName = "LeftLowerLeg")
+		pyrosim.Send_Sensor_Neuron(name = 7 , linkName = "RightLowerLeg")
 
-		pyrosim.Send_Motor_Neuron(name = 4 , jointName = "Torso_Backleg")	#motor neuron will send values to the motor controlling joint torso_backleg
-		pyrosim.Send_Motor_Neuron(name = 5 , jointName = "Torso_Frontleg")
-		pyrosim.Send_Motor_Neuron(name = 6 , jointName = "Torso_Leftleg")
+		pyrosim.Send_Motor_Neuron(name = 8 , jointName = "Torso_Backleg")	#motor neuron will send values to the motor controlling joint torso_backleg
+		pyrosim.Send_Motor_Neuron(name = 9 , jointName = "Torso_Frontleg")
+		pyrosim.Send_Motor_Neuron(name = 10 , jointName = "Torso_Leftleg")
+		pyrosim.Send_Motor_Neuron(name = 11 , jointName = "BackLeg_BackLowerLeg")
+		pyrosim.Send_Motor_Neuron(name = 12 , jointName = "FrontLeg_FrontLowerLeg")
+		pyrosim.Send_Motor_Neuron(name = 13 , jointName = "LeftLeg_LeftLowerLeg")
+		pyrosim.Send_Motor_Neuron(name = 14 , jointName = "RightLeg_RightLowerLeg")
 
 		for currentRow in range(c.numSensorNeurons):
 			for currentColumn in range(c.numMotorNeurons):
