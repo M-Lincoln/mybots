@@ -51,12 +51,12 @@ class ROBOT:
     def Get_Fitness(self,solutionID):
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotID)
         basePosition = basePositionAndOrientation[0]
-        xPosition = basePosition[0]
+        yPosition = basePosition[1]
         #stateOfLinkZero = p.getLinkState(self.robotID,0)        #first argument = body ID of a body in the simulation, second argument = particular link we are interested in. First link = "0"
         #positionOfLinkZero = stateOfLinkZero[0]                 #extract 1st tuple = position of the link
         #xCoordinateOfLinkZero = positionOfLinkZero[0]           #extract the x coordinate of the link's position
         f = open("temp" + solutionID + ".txt", "w")
-        f.write(str(xPosition))
+        f.write(str(yPosition))
         f.close()
         #os.system("rename temp"+ str(solutionID) +".txt fitness" + str(solutionID) +".txt")
         os.rename("temp" +str(solutionID)+ ".txt" ,"fitness"+str(solutionID)+".txt")
