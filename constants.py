@@ -9,14 +9,14 @@ yworld=5
 zworld=height/2
 
 #define number of sensor neurons and motor neurons
-numSensorNeurons = 8
-numMotorNeurons = 7
+numSensorNeurons = 2
+numMotorNeurons = 3
 
 #create motor joint angle range for the legs' joints:
-motorJointRange = 0.2
+motorJointRange = 0.5
 
 #create sin variables for legs
-amplitude = pi/4 #pi/4 is good
+amplitude = pi #pi/4 is good
 frequency = 10 #10 is good
 offset = 0
 
@@ -25,10 +25,10 @@ offset = 0
 iterationLength = 1000
 
 #define max force for the motor in the joints
-defineMaxForce = 35
+defineMaxForce = 35 #35 works
 
 #define the sleep time for the simulation
-sleepTime=0.005 #1/60 is better for longer simulation but not too long
+sleepTime=1/60 #1/60 is better for longer simulation but not too long. 0.005 is quick
 
 #define the number of Generations for evolution:
 numberOfGenerations = 10

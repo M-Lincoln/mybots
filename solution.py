@@ -32,8 +32,8 @@ class SOLUTION:
 		os.system("del fitness" + str(self.myID) + ".txt")	               #delete the fitnessx.txt file after it has been read, so we don't clutter our directory
 
 	def Mutate(self):
-		randomRow = numpy.random.randint(0,c.numMotorNeurons)
-		randomColumn = numpy.random.randint(0,1)
+		randomRow = numpy.random.randint(0,c.numSensorNeurons)
+		randomColumn = numpy.random.randint(0,c.numMotorNeurons)
 		self.weights[randomRow,randomColumn] = numpy.random.random()*2-1		#specifies a random element in self.weights (the weight of the synapse that connects the randomRow'th sensor neuron to the randomColumn'th motor neuron.)
 
 	def Set_ID(self,ID):
@@ -46,56 +46,70 @@ class SOLUTION:
 
 	def Create_Body(self):
 		pyrosim.Start_URDF("body.urdf")
-		#create a robot with an abdomen:
-		pyrosim.Send_Cube(name="Torso", pos=[0,0,1] , size=[c.width,c.length,c.height]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		#create a robot with a head:
+		pyrosim.Send_Cube(name="Head", pos=[0,0,1] , size=[1,1,2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 		
-		#create backleg
-		pyrosim.Send_Joint( name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = [0,-0.5,1], jointAxis = "1 0 0") #Joint
-		pyrosim.Send_Cube(name="Backleg", pos=[0,-0.5,0] , size=[0.2,1,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
-		#create BackLowerLeg
-		pyrosim.Send_Joint( name = "BackLeg_BackLowerLeg" , parent= "Backleg" , child = "BackLowerLeg" , type = "revolute", position = [0,-1,0], jointAxis = "1 0 0") #Joint
-		pyrosim.Send_Cube(name="BackLowerLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		#create Neck1
+		pyrosim.Send_Joint( name = "Head_Neck1" , parent= "Head" , child = "Neck1" , type = "revolute", position = [0.5,0,1], jointAxis = "0 1 0") #Joint
+		pyrosim.Send_Cube(name="Neck1", pos=[0.125,0,0] , size=[0.25,0.15,0.15]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 		
-		#create frontleg
-		pyrosim.Send_Joint( name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = [0,0.5,1], jointAxis = "1 0 0") #Joint
-		pyrosim.Send_Cube(name="Frontleg", pos=[0,0.5,0] , size=[0.2,1,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
-		#create FrontLowerLeg
-		pyrosim.Send_Joint( name = "FrontLeg_FrontLowerLeg" , parent= "Frontleg" , child = "FrontLowerLeg" , type = "revolute", position = [0,1,0], jointAxis = "1 0 0") #Joint
-		pyrosim.Send_Cube(name="FrontLowerLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1]) 
+		#create Abdomen1
+		pyrosim.Send_Joint( name = "Neck1_Abdomen1" , parent= "Neck1" , child = "Abdomen1" , type = "revolute", position = [0.25,0,0], jointAxis = "0 1 0") #Joint
+		pyrosim.Send_Cube(name="Abdomen1", pos=[0.5,0,0] , size=[1,1,2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
 		
-		#create leftleg
-		pyrosim.Send_Joint( name = "Torso_Leftleg" , parent= "Torso" , child = "Leftleg" , type = "revolute", position = [-0.5,0,1], jointAxis = "0 1 0") #Joint
-		pyrosim.Send_Cube(name="Leftleg", pos=[-0.5,0,0] , size=[1,0.2,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
-		#create LowerLeftLeg
-		pyrosim.Send_Joint( name = "LeftLeg_LeftLowerLeg" , parent= "Leftleg" , child = "LeftLowerLeg" , type = "revolute", position = [-1,0,0], jointAxis = "0 1 0") #Joint
-		pyrosim.Send_Cube(name="LeftLowerLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1])
+		#create Neck2
+		pyrosim.Send_Joint( name = "Abdomen1_Neck2" , parent= "Abdomen1" , child = "Neck2" , type = "revolute", position = [1,0,0], jointAxis = "0 1 0") #Joint
+		pyrosim.Send_Cube(name="Neck2", pos=[0.125,0,0] , size=[0.25,0.15,0.15]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		
+		#create Abdomen2
+		pyrosim.Send_Joint( name = "Neck2_Abdomen2" , parent= "Neck2" , child = "Abdomen2" , type = "revolute", position = [0.25,0,0], jointAxis = "0 1 0") #Joint
+		pyrosim.Send_Cube(name="Abdomen2", pos=[0.5,0,0] , size=[1,1,2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		
+		#create Neck3
+		pyrosim.Send_Joint( name = "Abdomen2_Neck3" , parent= "Abdomen2" , child = "Neck3" , type = "revolute", position = [1,0,0], jointAxis = "0 1 0") #Joint
+		pyrosim.Send_Cube(name="Neck3", pos=[0.125,0,0] , size=[0.25,0.15,0.15])
 
-		#create rightleg
-		pyrosim.Send_Joint( name = "Torso_Rightleg" , parent= "Torso" , child = "Rightleg" , type = "revolute", position = [0.5,0,1], jointAxis = "0 1 0") #Joint
-		pyrosim.Send_Cube(name="Rightleg", pos=[0.5,0,0] , size=[1,0.2,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
-		#create LowerRightLeg
-		pyrosim.Send_Joint( name = "RightLeg_RightLowerLeg" , parent= "Rightleg" , child = "RightLowerLeg" , type = "revolute", position = [1,0,0], jointAxis = "0 1 0") #Joint
-		pyrosim.Send_Cube(name="RightLowerLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1])
+		#create Abdomen3
+		pyrosim.Send_Joint( name = "Neck3_Abdomen3" , parent= "Neck3" , child = "Abdomen3" , type = "revolute", position = [0.25,0,0], jointAxis = "0 1 0") #Joint
+		pyrosim.Send_Cube(name="Abdomen3", pos=[0.5,0,0] , size=[1,1,2])
+		###create FrontLowerLeg
+		#pyrosim.Send_Joint( name = "FrontLeg_FrontLowerLeg" , parent= "Frontleg" , child = "FrontLowerLeg" , type = "revolute", position = [0,1,0], jointAxis = "1 0 0") #Joint
+		#pyrosim.Send_Cube(name="FrontLowerLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1]) 
+		
+		##create leftleg
+		#pyrosim.Send_Joint( name = "Torso_Leftleg" , parent= "Torso" , child = "Leftleg" , type = "revolute", position = [-0.5,0,1], jointAxis = "0 1 0") #Joint
+		#pyrosim.Send_Cube(name="Leftleg", pos=[-0.5,0,0] , size=[1,0.2,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		##create LowerLeftLeg
+		#pyrosim.Send_Joint( name = "LeftLeg_LeftLowerLeg" , parent= "Leftleg" , child = "LeftLowerLeg" , type = "revolute", position = [-1,0,0], jointAxis = "0 1 0") #Joint
+		#pyrosim.Send_Cube(name="LeftLowerLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1])
+
+		##create rightleg
+		#pyrosim.Send_Joint( name = "Torso_Rightleg" , parent= "Torso" , child = "Rightleg" , type = "revolute", position = [0.5,0,1], jointAxis = "0 1 0") #Joint
+		#pyrosim.Send_Cube(name="Rightleg", pos=[0.5,0,0] , size=[1,0.2,0.2]) #stores a box with initial position x, y, z and length, width, and height, in body.urdf
+		##create LowerRightLeg
+		#pyrosim.Send_Joint( name = "RightLeg_RightLowerLeg" , parent= "Rightleg" , child = "RightLowerLeg" , type = "revolute", position = [1,0,0], jointAxis = "0 1 0") #Joint
+		#pyrosim.Send_Cube(name="RightLowerLeg", pos=[0,0,-0.5] , size=[0.2,0.2,1])
 		pyrosim.End()
 
 	def Create_Brain(self):
 		pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")		#creating a unique brain for each child and parent
-		pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso") #sensor neurons receive values from sensors. This neuron will receive a value from sensor stored in torso.
-		pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "Backleg")	#sensor neuron attached to touch sensor in back leg
-		pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "Frontleg")	#sensor neuron attached to touch sensor in front leg
-		pyrosim.Send_Sensor_Neuron(name = 3 , linkName = "Leftleg")	#sensor neuron attached to touch sensor in left leg
-		pyrosim.Send_Sensor_Neuron(name = 4 , linkName = "BackLowerLeg")
-		pyrosim.Send_Sensor_Neuron(name = 5 , linkName = "FrontLowerLeg")
-		pyrosim.Send_Sensor_Neuron(name = 6 , linkName = "LeftLowerLeg")
-		pyrosim.Send_Sensor_Neuron(name = 7 , linkName = "RightLowerLeg")
+		pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Head") #sensor neurons receive values from sensors. This neuron will receive a value from sensor stored in Head.
+		pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "Abdomen1")	
+		pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "Abdomen2")	
+		#pyrosim.Send_Sensor_Neuron(name = 3 , linkName = "Abdomen3")
+		#pyrosim.Send_Sensor_Neuron(name = 3 , linkName = "Leftleg")	#sensor neuron attached to touch sensor in left leg
+		#pyrosim.Send_Sensor_Neuron(name = 4 , linkName = "BackLowerLeg")
+		#pyrosim.Send_Sensor_Neuron(name = 5 , linkName = "FrontLowerLeg")
+		#pyrosim.Send_Sensor_Neuron(name = 6 , linkName = "LeftLowerLeg")
+		#pyrosim.Send_Sensor_Neuron(name = 7 , linkName = "RightLowerLeg")
 
-		pyrosim.Send_Motor_Neuron(name = 8 , jointName = "Torso_Backleg")	#motor neuron will send values to the motor controlling joint torso_backleg
-		pyrosim.Send_Motor_Neuron(name = 9 , jointName = "Torso_Frontleg")
-		pyrosim.Send_Motor_Neuron(name = 10 , jointName = "Torso_Leftleg")
-		pyrosim.Send_Motor_Neuron(name = 11 , jointName = "BackLeg_BackLowerLeg")
-		pyrosim.Send_Motor_Neuron(name = 12 , jointName = "FrontLeg_FrontLowerLeg")
-		pyrosim.Send_Motor_Neuron(name = 13 , jointName = "LeftLeg_LeftLowerLeg")
-		pyrosim.Send_Motor_Neuron(name = 14 , jointName = "RightLeg_RightLowerLeg")
+		pyrosim.Send_Motor_Neuron(name = 3 , jointName = "Head_Neck1")	#motor neuron will send values to the motor controlling joint Head_Neck1
+		pyrosim.Send_Motor_Neuron(name = 4 , jointName = "Neck1_Abdomen1")
+		pyrosim.Send_Motor_Neuron(name = 5 , jointName = "Abdomen1_Neck2")
+		#pyrosim.Send_Motor_Neuron(name = 6 , jointName = "Neck2_Abdomen2")
+		#pyrosim.Send_Motor_Neuron(name = 8 , jointName = "Abdomen2_Neck3")
+		#pyrosim.Send_Motor_Neuron(name = 9 , jointName = "Neck3_Abdomen3")
+		##pyrosim.Send_Motor_Neuron(name = 14 , jointName = "RightLeg_RightLowerLeg")
 
 		for currentRow in range(c.numSensorNeurons):
 			for currentColumn in range(c.numMotorNeurons):
